@@ -11,9 +11,11 @@ api-extractor.json
 jest.config.cjs
 nodemon.json
 tsconfig.build.json
+tsconfig.dist.json
 tsconfig.json
 tsdoc-metadata.json
 webpack.config.js
+webpack.config.mjs
 renovate.json
 .np-config.json
 
