@@ -2,7 +2,7 @@
   "name": "subito-connector-mongodb",
   "version": "0.2.0",
   "description": "Mongodb connector for subito micro services",
-  "main": "./dist/subito-connector-mongodb.js",
+  "main": "./dist/index.js",
   "typings": "./dist/subito-connector-mongodb.d.ts",
   "scripts": {
     "np": "npm run pre-publish && np",

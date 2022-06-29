@@ -162,7 +162,7 @@
   },
   "kind": "Package",
   "canonicalReference": "subito-connector-mongodb!",
-  "docComment": "",
+  "docComment": "/**\n * Handle MongoDB connections into Subito micro services\n *\n * @packageDocumentation\n */\n",
   "name": "subito-connector-mongodb",
   "preserveMemberOrder": false,
   "members": [
