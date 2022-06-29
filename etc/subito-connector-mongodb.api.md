@@ -188,8 +188,8 @@ export interface Update {
 
 // Warnings were encountered during analysis:
 //
-// src/Paginator.ts:74:7 - (ae-forgotten-export) The symbol "PaginatorOrder" needs to be exported by the entry point index.d.ts
-// src/Paginator.ts:114:7 - (ae-forgotten-export) The symbol "CursorEdge" needs to be exported by the entry point index.d.ts
+// src/Paginator.ts:78:7 - (ae-forgotten-export) The symbol "PaginatorOrder" needs to be exported by the entry point index.d.ts
+// src/Paginator.ts:118:7 - (ae-forgotten-export) The symbol "CursorEdge" needs to be exported by the entry point index.d.ts
 // src/Repository.ts:62:13 - (ae-forgotten-export) The symbol "IEntity" needs to be exported by the entry point index.d.ts
 
 // (No @packageDocumentation comment for this package)
