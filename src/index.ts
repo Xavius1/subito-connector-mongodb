@@ -1,6 +1,12 @@
 import type { ObjectId } from 'mongodb';
 
 /**
+ * Handle MongoDB connections into Subito micro services
+ *
+ * @packageDocumentation
+ */
+
+/**
  * Classic MongoDB ID
  * @public
  */
