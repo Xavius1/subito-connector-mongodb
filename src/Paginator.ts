@@ -64,6 +64,10 @@ class Paginator implements IPaginator {
   }
 
   setCursor({ field, type }: { field: string, type: ParseType}) {
+    if (/__proto__/.test(field)) {
+      throw new Error('Reserved word can not be used as field');
+    }
+
     this.field = field;
     this.type = type;
     return this;
