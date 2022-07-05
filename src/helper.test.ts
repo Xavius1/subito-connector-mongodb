@@ -1,6 +1,6 @@
-import Helper from './helper';
+import Helper from './Helper';
 
-describe('helper.js', () => {
+describe('Helper.newMongoId', () => {
   // newMongoId
   test('newMongoId should be a string', () => {
     expect(typeof Helper.newMongoId(true))

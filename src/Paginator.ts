@@ -1,69 +1,76 @@
-import { Calculator, Data } from 'subito-lib';
+import { Calculator, Datte } from 'subito-lib';
 import type { ParseType } from 'subito-lib';
-import moment from 'moment';
-import type { Document, Pipeline } from './index.js';
-
-export type PaginatorArgs = {
-  first: number
-  last: number
-  before: string
-  after: string
-}
-
-export interface IPaginator {
-  config: Function
-  setPageInfo: Function
-  toPipeline: Function
-}
-
-type CursorEdge = {
-  cursor: string
-  node: any
-}
-
-export type PaginatorOrder = 'ASC' | 'DESC';
+import type { Document } from 'mongodb';
+import type {
+  IPaginator, PaginatorOrder, IPaginatorInput, IPageInfoInput, ICursor, CursorEdge,
+} from './Paginator.d';
+import type { Pipeline } from './Repository.d';
+import Helper from './Helper';
+import type { IFilterPipelineInput } from './Helper.d';
 
 /**
  * Class to implements the cursor paginator pattern
- * Specs by relayjs
+ *
+ * @remarks
+ * Specs by relayjs {@link https://relay.dev/graphql/connections.htm}
+ * Default cusor is based on the "createdAt" field, you can anything that
+ * sortable & unique as "slug"
  *
  * @param args - Configure the paginator
  *
  * @public
  */
 class Paginator implements IPaginator {
-  private order: PaginatorOrder;
+  protected order: PaginatorOrder;
 
-  private limit: number = 0;
+  protected limit: number = 0;
 
-  private field: string = 'createdAt';
+  protected field: string = 'createdAt';
 
-  private type: ParseType = 'Date';
+  protected filters: IFilterPipelineInput;
 
-  private value: string | null = null;
+  protected type: ParseType = 'Date';
 
-  private hasNextPage: boolean = false;
+  protected value: string | null = null;
 
-  private hasPreviousPage: boolean = false;
+  protected hasNextPage: boolean = false;
 
-  private currentPage: number = 0;
+  protected hasPreviousPage: boolean = false;
 
-  private totalPage: number = 0;
+  protected currentPage: number = 0;
 
-  private totalResults: number = 0;
+  protected totalPage: number = 0;
+
+  protected totalResults: number = 0;
 
   constructor({
     first,
     last,
     before,
     after,
-  }: PaginatorArgs) {
+    filters,
+  }: IPaginatorInput) {
     this.limit = first || last;
     this.order = first ? 'ASC' : 'DESC';
     this.value = first ? after : before;
+    this.filters = filters;
   }
 
-  setCursor({ field, type }: { field: string, type: ParseType}) {
+  /**
+   * Set a custom cursor
+   *
+   * @example
+   * ```
+   * // Use the "slug" field as cursor
+   * paginator.setCursor({ field: 'slug', type: 'string' });
+   * ```
+   *
+   * @param input - Configuration of the new cursor
+   * @returns
+   *
+   * @public
+   */
+  setCursor({ field, type }: ICursor) {
     if (/__proto__/.test(field)) {
       throw new Error('Reserved word can not be used as field');
     }
@@ -73,22 +80,15 @@ class Paginator implements IPaginator {
     return this;
   }
 
-  config() {
-    const {
-      limit, order, field, value: defaultValue, type,
-    } = this;
-    const data = new Data(defaultValue);
-    const value = defaultValue ? data.parseType(type) : null;
-
-    return {
-      limit,
-      order,
-      field,
-      value,
-    };
-  }
-
-  setPageInfo({ total = 0, cursored = 0 }) {
+  /**
+   * Define page info from results
+   *
+   * @param input - The data needed to calculate page info
+   * @returns
+   *
+   * @public
+   */
+  setPageInfo({ total = 0, cursored = 0 }: IPageInfoInput) {
     const { limit, order } = this;
     const previousResults = (total - cursored);
     this.totalResults = total;
@@ -102,19 +102,40 @@ class Paginator implements IPaginator {
     if (order === 'DESC') {
       this.currentPage = Calculator.round(this.totalPage - this.currentPage + 1);
     }
+
+    return this;
   }
 
+  /**
+   * Get the cursor value from a doc
+   *
+   * @param doc - The doc used to create the cursor
+   * @returns
+   *
+   * @public
+   */
   getDocCursor(doc: Document) {
     const { type, field } = this;
-    const value = doc.get(field);
+    const value = doc[field];
     if (type === 'Date') {
-      return moment(value).format('YYYY-MM-DDTHH:mm:ss.SSS[Z]');
+      const d = new Datte(value);
+      // Return the unix millisecond timestamp
+      return d.toString('x');
     }
 
+    // Return the raw value
     return value;
   }
 
-  map(docs: Document[]) {
+  /**
+   * Get the paginator result
+   *
+   * @param docs - List of raw mongodb documents
+   * @returns
+   *
+   * @public
+   */
+  get(docs: Document[]) {
     const {
       hasNextPage, hasPreviousPage, totalPage, totalResults, currentPage,
     } = this;
@@ -140,10 +161,15 @@ class Paginator implements IPaginator {
   }
 
   /**
+   * Remove null step from the pipeline
+   *
+   * @param pipeline - The mongodb pipeline
+   * @returns
+   *
    * @internal
    */
-  static pipelineCleaner(arr: Pipeline) {
-    return arr.filter((item) => {
+  static pipelineCleaner(pipeline: Pipeline) {
+    return pipeline.filter((item) => {
       if (!item) {
         return null;
       }
@@ -152,6 +178,11 @@ class Paginator implements IPaginator {
   }
 
   /**
+   * Generate the pipeline step to get the next wanted docs
+   *
+   * @param reverse - If you want to sort by desc
+   * @returns
+   *
    * @internal
    */
   makeMatcher(reverse: boolean) {
@@ -173,10 +204,28 @@ class Paginator implements IPaginator {
     return matcher;
   }
 
-  toPipeline(pipeline: Pipeline, reverse: boolean) {
+  /**
+   * Get the pipeline to use for the aggregation
+   *
+   * @param pipeline - Custom pipeline used to match a sub-selection of docs
+   * @param reverse - Set to true if you want to sort by desc
+   * @returns
+   *
+   * @public
+   */
+  getPipeline(customPipeline: Pipeline, reverse: boolean = false) {
     const { field, order, limit } = this;
+
+    const filters = Helper.getFilterPipeline(this.filters);
+
+    const filtersPipeline = [];
+    if (filters) {
+      filtersPipeline.push({ $match: filters });
+    }
+
     return [
-      ...pipeline,
+      ...filtersPipeline,
+      ...customPipeline,
       { $sort: { [field]: (order === 'DESC' ? -1 : 1) } },
       {
         $facet: {

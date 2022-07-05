@@ -1,16 +1,9 @@
 import mongodb from 'mongodb';
-
-/** @public */
-export type MongoDBLink = string
-/** @public */
-export type MongoDBName = string
-/** @public */
-export type MongoDBParams = Object
-/** @public */
-export type MongoDBOptions = Object
+import type {
+  MongoDBLink, MongoDBName, MongoDBOptions, MongoDBParams,
+} from './Connector.d';
 
 /**
- * MongoDB connector.
  * Create a new MongoDB connection
  *
  * @example
@@ -32,16 +25,16 @@ export type MongoDBOptions = Object
  *
  * @public
  */
-class MongoDBConnector {
-  private db: any;
+class Connector {
+  protected db: any;
 
-  private link: MongoDBLink;
+  protected link: MongoDBLink;
 
-  private dbName: MongoDBName;
+  protected dbName: MongoDBName;
 
-  private params: MongoDBParams;
+  protected params: string;
 
-  private options: MongoDBOptions;
+  protected options: MongoDBOptions;
 
   constructor(
     link: MongoDBLink,
@@ -69,6 +62,10 @@ class MongoDBConnector {
 
   /**
    * Connect to the DB
+   *
+   * @returns
+   *
+   * @public
    */
   async connect() {
     try {
@@ -86,10 +83,12 @@ class MongoDBConnector {
 
   /**
    * Get the connection
+   *
+   * @public
    */
   get() {
     return this.db;
   }
 }
 
-export default MongoDBConnector;
+export default Connector;
