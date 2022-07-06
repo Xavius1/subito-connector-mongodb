@@ -4,7 +4,7 @@
 
 ```ts
 
-import type { Document as Document_2 } from 'mongodb';
+import { Document as Document_2 } from 'mongodb';
 import { Fields } from 'apollo-datasource-mongodb';
 import mongo from 'mongodb';
 import { MongoDataSource } from 'apollo-datasource-mongodb';
@@ -14,41 +14,175 @@ import type { ParseType } from 'subito-lib';
 
 // @public
 export class Connector {
-    // Warning: (ae-forgotten-export) The symbol "MongoDBParams" needs to be exported by the entry point index.d.ts
     constructor(link: MongoDBLink, dbName: MongoDBName, params?: MongoDBParams, options?: MongoDBOptions);
     connect(): Promise<any>;
     // (undocumented)
     protected db: any;
-    // Warning: (ae-forgotten-export) The symbol "MongoDBName" needs to be exported by the entry point index.d.ts
-    //
     // (undocumented)
     protected dbName: MongoDBName;
     get(): any;
-    // Warning: (ae-forgotten-export) The symbol "MongoDBLink" needs to be exported by the entry point index.d.ts
-    //
     // (undocumented)
     protected link: MongoDBLink;
-    // Warning: (ae-forgotten-export) The symbol "MongoDBOptions" needs to be exported by the entry point index.d.ts
-    //
     // (undocumented)
     protected options: MongoDBOptions;
     // (undocumented)
     protected params: string;
 }
 
+// @public (undocumented)
+export type CursorEdge = {
+    cursor: string;
+    node: Document_2;
+};
+
+export { Document_2 as Document }
+
 // @public
 export class Helper {
-    // Warning: (ae-forgotten-export) The symbol "IFilterPipelineInput" needs to be exported by the entry point index.d.ts
-    // Warning: (ae-forgotten-export) The symbol "IFiltersPipeline" needs to be exported by the entry point index.d.ts
     static getFilterPipeline(filters: IFilterPipelineInput): IFiltersPipeline | null;
     static newMongoId(toString: boolean): string | mongo.ObjectId;
 }
 
-// Warning: (ae-forgotten-export) The symbol "IPaginator" needs to be exported by the entry point index.d.ts
-//
+// @public (undocumented)
+export interface ICursor {
+    // (undocumented)
+    field: string;
+    // (undocumented)
+    type: ParseType;
+}
+
+// @public (undocumented)
+export interface IDocInput {
+    // (undocumented)
+    [key: string]: any;
+    // (undocumented)
+    id: never;
+    // (undocumented)
+    _id: never;
+    // (undocumented)
+    slug?: string;
+}
+
+// @public (undocumented)
+export type IDocumentResult = Document_2 | null | undefined;
+
+// @public (undocumented)
+export interface IDocUpdateInput {
+    // (undocumented)
+    id: MongoIdExt;
+    // (undocumented)
+    query: {
+        $currentDate?: {
+            [key: string]: boolean | {
+                $type: 'timestamp' | 'date';
+            };
+        };
+        $inc?: {
+            [key: string]: number;
+        };
+        $min?: {
+            [key: string]: any;
+        };
+        $max?: {
+            [key: string]: any;
+        };
+        $mul?: {
+            [key: string]: number;
+        };
+        $rename?: {
+            [key: string]: string;
+        };
+        $set?: IDocInput;
+        $setOnInsert?: {
+            [key: string]: any;
+        };
+        $unset?: {
+            _id: never;
+            [key: string]: '';
+        };
+    };
+}
+
+// @public (undocumented)
+export interface IFilterPipelineInput {
+    // (undocumented)
+    [key: string]: (string | string[] | boolean | MatchFilter | undefined);
+    // (undocumented)
+    withDeleted?: boolean;
+}
+
+// @public (undocumented)
+export interface IFiltersPipeline {
+    // (undocumented)
+    $and: ({
+        [key: string]: unknown;
+        deletedAt?: null;
+    })[];
+}
+
+// @public (undocumented)
+export interface IPageInfoInput {
+    // (undocumented)
+    cursored: number;
+    // (undocumented)
+    total: number;
+}
+
+// @public (undocumented)
+export interface IPaginator {
+    // (undocumented)
+    getPipeline: Function;
+    // (undocumented)
+    setPageInfo: Function;
+}
+
+// @public (undocumented)
+export interface IPaginatorInput {
+    // (undocumented)
+    after: string;
+    // (undocumented)
+    before: string;
+    // (undocumented)
+    filters: IFilterPipelineInput;
+    // (undocumented)
+    first: number;
+    // (undocumented)
+    last: number;
+}
+
+// @public (undocumented)
+export type MatchFilter = {
+    operator: ('STRICT_WORD' | 'CONTAINS_WORD' | 'CONTAINS_PART');
+    value: (string | number);
+};
+
+// @public (undocumented)
+export type MongoDBLink = string;
+
+// @public (undocumented)
+export type MongoDBName = string;
+
+// @public (undocumented)
+export type MongoDBOptions = {
+    [key: string]: (string | number | boolean);
+};
+
+// @public (undocumented)
+export type MongoDBParams = {
+    [key: string]: (string | number | boolean);
+};
+
+// @public
+export type MongoId = ObjectId;
+
+// @public
+export type MongoIdExt = ObjectId | string;
+
+// @public
+export type MongoIdStr = string;
+
 // @public
 export class Paginator implements IPaginator {
-    // Warning: (ae-forgotten-export) The symbol "IPaginatorInput" needs to be exported by the entry point index.d.ts
     constructor({ first, last, before, after, filters, }: IPaginatorInput);
     // (undocumented)
     protected currentPage: number;
@@ -80,19 +214,13 @@ export class Paginator implements IPaginator {
     protected limit: number;
     // @internal
     protected makeMatcher(reverse: boolean): any;
-    // Warning: (ae-forgotten-export) The symbol "PaginatorOrder" needs to be exported by the entry point index.d.ts
-    //
     // (undocumented)
     protected order: PaginatorOrder;
-    // Warning: (ae-forgotten-export) The symbol "Pipeline" needs to be exported by the entry point index.d.ts
-    //
     // @internal
     static pipelineCleaner(pipeline: Pipeline): {
         [key: string]: any;
     }[];
-    // Warning: (ae-forgotten-export) The symbol "ICursor" needs to be exported by the entry point index.d.ts
     setCursor({ field, type }: ICursor): this;
-    // Warning: (ae-forgotten-export) The symbol "IPageInfoInput" needs to be exported by the entry point index.d.ts
     setPageInfo({ total, cursored }: IPageInfoInput): this;
     // (undocumented)
     protected totalPage: number;
@@ -104,17 +232,21 @@ export class Paginator implements IPaginator {
     protected value: string | null;
 }
 
+// @public (undocumented)
+export type PaginatorOrder = 'ASC' | 'DESC';
+
+// @public (undocumented)
+export type Pipeline = ({
+    [key: string]: any;
+})[];
+
 // @public
 export abstract class Repository extends MongoDataSource<Document_2> {
-    // Warning: (ae-forgotten-export) The symbol "IDocInput" needs to be exported by the entry point index.d.ts
     canBeInserted(input: IDocInput): Promise<boolean>;
-    // Warning: (ae-forgotten-export) The symbol "IDocUpdateInput" needs to be exported by the entry point index.d.ts
     canBeUpdated({ id, query }: IDocUpdateInput): Promise<boolean>;
-    // Warning: (ae-forgotten-export) The symbol "IDocumentResult" needs to be exported by the entry point index.d.ts
     createDoc(input: IDocInput): Promise<IDocumentResult>;
     createManyDocs(arr: IDocInput[]): Promise<IDocumentResult[]>;
     protected cursor: ICursor;
-    // Warning: (ae-forgotten-export) The symbol "MongoIdExt" needs to be exported by the entry point index.d.ts
     deleteById(id: MongoIdExt): Promise<any>;
     deleteManyById(ids: MongoIdExt[]): Promise<any>;
     findByCursor(input: IPaginatorInput, pipeline: Pipeline): Promise<{
@@ -137,9 +269,5 @@ export abstract class Repository extends MongoDataSource<Document_2> {
     prepareNewDoc(doc: IDocInput): Document_2;
     updateDoc(input: IDocUpdateInput): Promise<IDocumentResult>;
 }
-
-// Warnings were encountered during analysis:
-//
-// src/Paginator.ts:166:30 - (ae-forgotten-export) The symbol "CursorEdge" needs to be exported by the entry point index.d.ts
 
 ```

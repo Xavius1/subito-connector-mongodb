@@ -1,16 +1,19 @@
 import mongo from 'mongodb';
 
+/** @public */
 export type MatchFilter = {
   operator: ('STRICT_WORD' | 'CONTAINS_WORD' | 'CONTAINS_PART')
   value: (string | number)
 }
 
 // TODO: Handle undefined withDeleted into [key] field
+/** @public */
 export interface IFilterPipelineInput {
   [key: string]: (string | string[] | boolean | MatchFilter | undefined)
   withDeleted?: boolean
 }
 
+/** @public */
 export interface IFiltersPipeline {
   $and: ({
     [key: string]: unknown

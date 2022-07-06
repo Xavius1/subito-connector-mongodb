@@ -308,11 +308,11 @@
       "default": {
         "logLevel": "warning"
         // "addToApiReportFile": false
-      }
-      // "ae-extra-release-tag": {
-      //   "logLevel": "warning",
+      },
+      "ae-forgotten-export": {
+        "logLevel": "error"
       //   "addToApiReportFile": true
-      // },
+      }
       //
       // . . .
     },

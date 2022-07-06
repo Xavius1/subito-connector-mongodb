@@ -5,6 +5,7 @@ import Helper from './Helper';
 import Paginator from './Paginator';
 import type { ICursor, IPaginatorInput } from './Paginator';
 
+/** @public */
 export type { Document } from 'mongodb';
 
 /**
@@ -25,6 +26,7 @@ export type MongoIdExt = ObjectId | string;
  */
 export type MongoIdStr = string;
 
+/** @public */
 export interface IDocInput {
   _id: never
   id: never
@@ -32,6 +34,7 @@ export interface IDocInput {
   [key: string]: any
 }
 
+/** @public */
 export interface IDocUpdateInput {
   id: MongoIdExt
   query: {
@@ -50,8 +53,10 @@ export interface IDocUpdateInput {
   }
 }
 
+/** @public */
 export type IDocumentResult = Document | null | undefined
 
+/** @public */
 export type Pipeline = ({ [key: string]: any })[]
 
 /**

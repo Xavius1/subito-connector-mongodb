@@ -1,10 +1,10 @@
 import { Calculator, Datte } from 'subito-lib';
 import type { ParseType } from 'subito-lib';
-import type { Document } from 'mongodb';
-import type { Pipeline } from './Repository';
+import type { Document, Pipeline } from './Repository';
 import Helper from './Helper';
 import type { IFilterPipelineInput } from './Helper';
 
+/** @public */
 export interface IPaginatorInput {
   first: number
   last: number
@@ -13,24 +13,29 @@ export interface IPaginatorInput {
   filters: IFilterPipelineInput
 }
 
+/** @public */
 export interface IPageInfoInput {
   total: number
   cursored: number
 }
 
+/** @public */
 export interface IPaginator {
   // config: Function
   setPageInfo: Function
   getPipeline: Function
 }
 
+/** @public */
 export type PaginatorOrder = 'ASC' | 'DESC';
 
+/** @public */
 export type CursorEdge = {
   cursor: string
   node: Document
 }
 
+/** @public */
 export interface ICursor {
   field: string
   type: ParseType
