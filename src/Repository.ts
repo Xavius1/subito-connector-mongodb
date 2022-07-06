@@ -54,7 +54,7 @@ export interface IDocUpdateInput {
 }
 
 /** @public */
-export type IDocumentResult = Document | null | undefined
+export type DocumentResult = Document | null | undefined
 
 /** @public */
 export type Pipeline = ({ [key: string]: any })[]
@@ -129,7 +129,7 @@ abstract class Repository extends MongoDataSource<Document> {
    *
    * @public
    */
-  public async createDoc(input: IDocInput): Promise<IDocumentResult> {
+  public async createDoc(input: IDocInput): Promise<DocumentResult> {
     this.canBeInserted(input);
 
     try {
@@ -151,7 +151,7 @@ abstract class Repository extends MongoDataSource<Document> {
    *
    * @public
    */
-  public async createManyDocs(arr: IDocInput[]): Promise<IDocumentResult[]> {
+  public async createManyDocs(arr: IDocInput[]): Promise<DocumentResult[]> {
     const docs: Document[] = [];
     arr.forEach((input) => {
       this.canBeInserted(input);
@@ -201,7 +201,7 @@ abstract class Repository extends MongoDataSource<Document> {
    *
    * @public
    */
-  public async updateDoc(input: IDocUpdateInput): Promise<IDocumentResult> {
+  public async updateDoc(input: IDocUpdateInput): Promise<DocumentResult> {
     this.canBeUpdated(input);
 
     try {
@@ -285,7 +285,7 @@ abstract class Repository extends MongoDataSource<Document> {
    *
    * @public
    */
-  public async findOneByFields(fields: Fields, options?: Options): Promise<IDocumentResult> {
+  public async findOneByFields(fields: Fields, options?: Options): Promise<DocumentResult> {
     const [firstDoc] = await this.findByFields(fields, options);
     return firstDoc;
   }
@@ -299,7 +299,7 @@ abstract class Repository extends MongoDataSource<Document> {
    *
    * @public
    */
-  public async findOneBySlug(slug: string, options?: Options): Promise<IDocumentResult> {
+  public async findOneBySlug(slug: string, options?: Options): Promise<DocumentResult> {
     return this.findOneByFields({ slug }, options);
   }
 
