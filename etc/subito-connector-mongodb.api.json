@@ -1481,7 +1481,7 @@
         {
           "kind": "TypeAlias",
           "canonicalReference": "subito-connector-mongodb!MongoDBOptions:type",
-          "docComment": "/**\n * Connection options {@link https://www.mongodb.com/docs/drivers/node/current/fundamentals/connection/connection-options/}\n *\n * @example\n * ```\n * {\n *   useNewUrlParser: true,\n *   useUnifiedTopology: true,\n *   keepAlive: true,\n * }\n * ```\n *\n * @public\n */\n",
+          "docComment": "/**\n * Connection options\n *\n * @remarks\n *\n * {@link https://www.mongodb.com/docs/drivers/node/current/fundamentals/connection/connection-options/}\n *\n * @example\n * ```\n * {\n *   useNewUrlParser: true,\n *   useUnifiedTopology: true,\n *   keepAlive: true,\n * }\n * ```\n *\n * @public\n */\n",
           "excerptTokens": [
             {
               "kind": "Content",
@@ -1506,7 +1506,7 @@
         {
           "kind": "TypeAlias",
           "canonicalReference": "subito-connector-mongodb!MongoDBParams:type",
-          "docComment": "/**\n * Connection params {@link https://www.mongodb.com/docs/drivers/node/current/fundamentals/connection/connect/#std-label-node-connect-to-mongodb}\n *\n * @example\n * ```\n * {\n *   authSource: 'admin',\n *   replicaSet: 'rs0',\n * }\n * ```\n *\n * @public\n */\n",
+          "docComment": "/**\n * Connection params\n *\n * @remarks\n *\n * {@link https://www.mongodb.com/docs/drivers/node/current/fundamentals/connection/connect/#std-label-node-connect-to-mongodb}\n *\n * @example\n * ```\n * {\n *   authSource: 'admin',\n *   replicaSet: 'rs0',\n * }\n * ```\n *\n * @public\n */\n",
           "excerptTokens": [
             {
               "kind": "Content",

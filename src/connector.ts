@@ -20,7 +20,10 @@ export type MongoDBLink = string
 export type MongoDBName = string
 
 /**
- * Connection params {@link https://www.mongodb.com/docs/drivers/node/current/fundamentals/connection/connect/#std-label-node-connect-to-mongodb}
+ * Connection params
+ *
+ * @remarks
+ * {@link https://www.mongodb.com/docs/drivers/node/current/fundamentals/connection/connect/#std-label-node-connect-to-mongodb}
  *
  * @example
  * ```
@@ -37,7 +40,10 @@ export type MongoDBParams = {
 }
 
 /**
- * Connection options {@link https://www.mongodb.com/docs/drivers/node/current/fundamentals/connection/connection-options/}
+ * Connection options
+ *
+ * @remarks
+ * {@link https://www.mongodb.com/docs/drivers/node/current/fundamentals/connection/connection-options/}
  *
  * @example
  * ```
