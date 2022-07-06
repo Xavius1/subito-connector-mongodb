@@ -7,6 +7,7 @@ doc/
 .gitattributes
 .npmrc
 .nvmrc
+.github
 api-extractor.json
 jest.config.cjs
 nodemon.json
