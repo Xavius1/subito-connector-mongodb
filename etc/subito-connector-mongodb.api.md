@@ -37,6 +37,9 @@ export type CursorEdge = {
 
 export { Document_2 as Document }
 
+// @public (undocumented)
+export type DocumentResult = Document_2 | null | undefined;
+
 // @public
 export class Helper {
     static getFilterPipeline(filters: IFilterPipelineInput): IFiltersPipeline | null;
@@ -62,9 +65,6 @@ export interface IDocInput {
     // (undocumented)
     slug?: string;
 }
-
-// @public (undocumented)
-export type IDocumentResult = Document_2 | null | undefined;
 
 // @public (undocumented)
 export interface IDocUpdateInput {
@@ -156,18 +156,18 @@ export type MatchFilter = {
     value: (string | number);
 };
 
-// @public (undocumented)
+// @public
 export type MongoDBLink = string;
 
-// @public (undocumented)
+// @public
 export type MongoDBName = string;
 
-// @public (undocumented)
+// @public
 export type MongoDBOptions = {
     [key: string]: (string | number | boolean);
 };
 
-// @public (undocumented)
+// @public
 export type MongoDBParams = {
     [key: string]: (string | number | boolean);
 };
@@ -244,8 +244,8 @@ export type Pipeline = ({
 export abstract class Repository extends MongoDataSource<Document_2> {
     canBeInserted(input: IDocInput): Promise<boolean>;
     canBeUpdated({ id, query }: IDocUpdateInput): Promise<boolean>;
-    createDoc(input: IDocInput): Promise<IDocumentResult>;
-    createManyDocs(arr: IDocInput[]): Promise<IDocumentResult[]>;
+    createDoc(input: IDocInput): Promise<DocumentResult>;
+    createManyDocs(arr: IDocInput[]): Promise<DocumentResult[]>;
     protected cursor: ICursor;
     deleteById(id: MongoIdExt): Promise<any>;
     deleteManyById(ids: MongoIdExt[]): Promise<any>;
@@ -261,13 +261,13 @@ export abstract class Repository extends MongoDataSource<Document_2> {
             endCursor: any;
         };
     }>;
-    findOneByFields(fields: Fields, options?: Options): Promise<IDocumentResult>;
-    findOneBySlug(slug: string, options?: Options): Promise<IDocumentResult>;
+    findOneByFields(fields: Fields, options?: Options): Promise<DocumentResult>;
+    findOneBySlug(slug: string, options?: Options): Promise<DocumentResult>;
     getDate(): Date;
     hardDeleteById(id: MongoIdExt): Promise<any>;
     hardDeleteManyById(ids: MongoIdExt[]): Promise<any>;
     prepareNewDoc(doc: IDocInput): Document_2;
-    updateDoc(input: IDocUpdateInput): Promise<IDocumentResult>;
+    updateDoc(input: IDocUpdateInput): Promise<DocumentResult>;
 }
 
 ```
