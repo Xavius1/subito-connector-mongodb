@@ -54,7 +54,12 @@ export type IDocumentResult = Document | null | undefined
 
 export type Pipeline = ({ [key: string]: any })[]
 
-class Repository extends MongoDataSource<Document> {
+/**
+ * Abstract class to implement mongodb repository
+ *
+ * @public
+ */
+abstract class Repository extends MongoDataSource<Document> {
   /**
    * The cusor definition used by the Paginator
    */
@@ -71,7 +76,7 @@ class Repository extends MongoDataSource<Document> {
    *
    * @public
    */
-  async canBeInserted(input: IDocInput): Promise<boolean> {
+  public async canBeInserted(input: IDocInput): Promise<boolean> {
     const { slug } = input;
     if (slug) {
       const docWithSlug = await this.findOneBySlug(slug);
@@ -90,7 +95,7 @@ class Repository extends MongoDataSource<Document> {
    *
    * @public
    */
-  getDate(): Date { // eslint-disable-line class-methods-use-this
+  public getDate(): Date { // eslint-disable-line class-methods-use-this
     const d = new Datte();
     return d.toDate();
   }
@@ -103,7 +108,7 @@ class Repository extends MongoDataSource<Document> {
    *
    * @public
    */
-  prepareNewDoc(doc: IDocInput): Document {
+  public prepareNewDoc(doc: IDocInput): Document {
     const toSave: Document = { ...doc };
     toSave._id = Helper.newMongoId(true); // eslint-disable-line no-underscore-dangle
     toSave.createdAt = this.getDate();
@@ -119,7 +124,7 @@ class Repository extends MongoDataSource<Document> {
    *
    * @public
    */
-  async createDoc(input: IDocInput): Promise<IDocumentResult> {
+  public async createDoc(input: IDocInput): Promise<IDocumentResult> {
     this.canBeInserted(input);
 
     try {
@@ -141,7 +146,7 @@ class Repository extends MongoDataSource<Document> {
    *
    * @public
    */
-  async createManyDocs(arr: IDocInput[]): Promise<IDocumentResult[]> {
+  public async createManyDocs(arr: IDocInput[]): Promise<IDocumentResult[]> {
     const docs: Document[] = [];
     arr.forEach((input) => {
       this.canBeInserted(input);
@@ -166,7 +171,7 @@ class Repository extends MongoDataSource<Document> {
    *
    * @public
    */
-  async canBeUpdated({ id, query }: IDocUpdateInput): Promise<boolean> {
+  public async canBeUpdated({ id, query }: IDocUpdateInput): Promise<boolean> {
     const { $set } = query;
     if ($set && $set.slug) {
       const docWithSlug = await this.findOneBySlug($set.slug);
@@ -191,7 +196,7 @@ class Repository extends MongoDataSource<Document> {
    *
    * @public
    */
-  async updateDoc(input: IDocUpdateInput): Promise<IDocumentResult> {
+  public async updateDoc(input: IDocUpdateInput): Promise<IDocumentResult> {
     this.canBeUpdated(input);
 
     try {
@@ -216,7 +221,7 @@ class Repository extends MongoDataSource<Document> {
    *
    * @public
    */
-  async deleteById(id: MongoIdExt) {
+  public async deleteById(id: MongoIdExt) {
     return this.collection.updateOne({ _id: id }, { $set: { deleteAt: this.getDate() } });
   }
 
@@ -231,7 +236,7 @@ class Repository extends MongoDataSource<Document> {
    *
    * @public
    */
-  async hardDeleteById(id: MongoIdExt) {
+  public async hardDeleteById(id: MongoIdExt) {
     return this.collection.deleteOne({ _id: id });
   }
 
@@ -244,7 +249,7 @@ class Repository extends MongoDataSource<Document> {
    * @param ids - An array of doc id
    * @returns
    */
-  async deleteManyById(ids: MongoIdExt[]) {
+  public async deleteManyById(ids: MongoIdExt[]) {
     return this.collection.updateMany(
       { _id: { $in: ids } },
       { $set: { deleteAt: this.getDate() } },
@@ -262,7 +267,7 @@ class Repository extends MongoDataSource<Document> {
    *
    * @public
    */
-  async hardDeleteManyById(ids: MongoIdExt[]) {
+  public async hardDeleteManyById(ids: MongoIdExt[]) {
     return this.collection.deleteMany({ _id: { $in: ids } });
   }
 
@@ -275,7 +280,7 @@ class Repository extends MongoDataSource<Document> {
    *
    * @public
    */
-  async findOneByFields(fields: Fields, options?: Options): Promise<IDocumentResult> {
+  public async findOneByFields(fields: Fields, options?: Options): Promise<IDocumentResult> {
     const [firstDoc] = await this.findByFields(fields, options);
     return firstDoc;
   }
@@ -289,7 +294,7 @@ class Repository extends MongoDataSource<Document> {
    *
    * @public
    */
-  async findOneBySlug(slug: string, options?: Options): Promise<IDocumentResult> {
+  public async findOneBySlug(slug: string, options?: Options): Promise<IDocumentResult> {
     return this.findOneByFields({ slug }, options);
   }
 
@@ -302,7 +307,7 @@ class Repository extends MongoDataSource<Document> {
    *
    * @public
    */
-  async findByCursor(input: IPaginatorInput, pipeline: Pipeline) {
+  public async findByCursor(input: IPaginatorInput, pipeline: Pipeline) {
     const paginator = new Paginator(input);
     paginator.setCursor(this.cursor);
 

@@ -13,7 +13,7 @@ import { Options } from 'apollo-datasource-mongodb';
 import type { ParseType } from 'subito-lib';
 
 // @public
-export class MongoDBConnector {
+export class Connector {
     // Warning: (ae-forgotten-export) The symbol "MongoDBParams" needs to be exported by the entry point index.d.ts
     constructor(link: MongoDBLink, dbName: MongoDBName, params?: MongoDBParams, options?: MongoDBOptions);
     connect(): Promise<any>;
@@ -37,7 +37,7 @@ export class MongoDBConnector {
 }
 
 // @public
-export class MongoDBHelper {
+export class Helper {
     // Warning: (ae-forgotten-export) The symbol "IFilterPipelineInput" needs to be exported by the entry point index.d.ts
     // Warning: (ae-forgotten-export) The symbol "IFiltersPipeline" needs to be exported by the entry point index.d.ts
     static getFilterPipeline(filters: IFilterPipelineInput): IFiltersPipeline | null;
@@ -47,7 +47,7 @@ export class MongoDBHelper {
 // Warning: (ae-forgotten-export) The symbol "IPaginator" needs to be exported by the entry point index.d.ts
 //
 // @public
-export class MongoDBPaginator implements IPaginator {
+export class Paginator implements IPaginator {
     // Warning: (ae-forgotten-export) The symbol "IPaginatorInput" needs to be exported by the entry point index.d.ts
     constructor({ first, last, before, after, filters, }: IPaginatorInput);
     // (undocumented)
@@ -79,7 +79,7 @@ export class MongoDBPaginator implements IPaginator {
     // (undocumented)
     protected limit: number;
     // @internal
-    makeMatcher(reverse: boolean): any;
+    protected makeMatcher(reverse: boolean): any;
     // Warning: (ae-forgotten-export) The symbol "PaginatorOrder" needs to be exported by the entry point index.d.ts
     //
     // (undocumented)
@@ -104,8 +104,8 @@ export class MongoDBPaginator implements IPaginator {
     protected value: string | null;
 }
 
-// @public (undocumented)
-export class MongoDBRepository extends MongoDataSource<Document_2> {
+// @public
+export abstract class Repository extends MongoDataSource<Document_2> {
     // Warning: (ae-forgotten-export) The symbol "IDocInput" needs to be exported by the entry point index.d.ts
     canBeInserted(input: IDocInput): Promise<boolean>;
     // Warning: (ae-forgotten-export) The symbol "IDocUpdateInput" needs to be exported by the entry point index.d.ts
@@ -140,6 +140,6 @@ export class MongoDBRepository extends MongoDataSource<Document_2> {
 
 // Warnings were encountered during analysis:
 //
-// src/Paginator.ts:167:7 - (ae-forgotten-export) The symbol "CursorEdge" needs to be exported by the entry point index.d.ts
+// src/Paginator.ts:166:30 - (ae-forgotten-export) The symbol "CursorEdge" needs to be exported by the entry point index.d.ts
 
 ```

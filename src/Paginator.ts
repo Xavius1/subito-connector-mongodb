@@ -98,7 +98,7 @@ class Paginator implements IPaginator {
    *
    * @public
    */
-  setCursor({ field, type }: ICursor) {
+  public setCursor({ field, type }: ICursor) {
     if (/__proto__/.test(field)) {
       throw new Error('Reserved word can not be used as field');
     }
@@ -116,7 +116,7 @@ class Paginator implements IPaginator {
    *
    * @public
    */
-  setPageInfo({ total = 0, cursored = 0 }: IPageInfoInput) {
+  public setPageInfo({ total = 0, cursored = 0 }: IPageInfoInput) {
     const { limit, order } = this;
     const previousResults = (total - cursored);
     this.totalResults = total;
@@ -142,7 +142,7 @@ class Paginator implements IPaginator {
    *
    * @public
    */
-  getDocCursor(doc: Document) {
+  public getDocCursor(doc: Document) {
     const { type, field } = this;
     const value = doc[field];
     if (type === 'Date') {
@@ -163,7 +163,7 @@ class Paginator implements IPaginator {
    *
    * @public
    */
-  get(docs: Document[]) {
+  public get(docs: Document[]) {
     const {
       hasNextPage, hasPreviousPage, totalPage, totalResults, currentPage,
     } = this;
@@ -196,7 +196,7 @@ class Paginator implements IPaginator {
    *
    * @internal
    */
-  static pipelineCleaner(pipeline: Pipeline) {
+  public static pipelineCleaner(pipeline: Pipeline) {
     return pipeline.filter((item) => {
       if (!item) {
         return null;
@@ -213,7 +213,7 @@ class Paginator implements IPaginator {
    *
    * @internal
    */
-  makeMatcher(reverse: boolean) {
+  protected makeMatcher(reverse: boolean) {
     const {
       field, value, order,
     } = this;
@@ -241,7 +241,7 @@ class Paginator implements IPaginator {
    *
    * @public
    */
-  getPipeline(customPipeline: Pipeline, reverse: boolean = false) {
+  public getPipeline(customPipeline: Pipeline, reverse: boolean = false) {
     const { field, order, limit } = this;
 
     const filters = Helper.getFilterPipeline(this.filters);

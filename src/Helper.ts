@@ -31,7 +31,7 @@ class Helper {
    *
    * @public
    */
-  static newMongoId(toString: boolean) {
+  public static newMongoId(toString: boolean) {
     const id = new mongo.ObjectId();
 
     if (toString) {
@@ -49,7 +49,7 @@ class Helper {
    *
    * @public
    */
-  static getFilterPipeline(filters: IFilterPipelineInput) {
+  public static getFilterPipeline(filters: IFilterPipelineInput) {
     const matcher: IFiltersPipeline = { $and: [] };
 
     if (!filters?.withDeleted) {

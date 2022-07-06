@@ -80,7 +80,7 @@ class Connector {
    *
    * @public
    */
-  async connect() {
+  public async connect() {
     try {
       const client = await mongodb.MongoClient.connect(
         `${this.link}${this.dbName}${this.params}`,
@@ -99,7 +99,7 @@ class Connector {
    *
    * @public
    */
-  get() {
+  public get() {
     return this.db;
   }
 }

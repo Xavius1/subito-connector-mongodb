@@ -174,7 +174,7 @@
       "members": [
         {
           "kind": "Class",
-          "canonicalReference": "subito-connector-mongodb!MongoDBConnector:class",
+          "canonicalReference": "subito-connector-mongodb!Connector:class",
           "docComment": "/**\n * Create a new MongoDB connection\n *\n * @param link - MongoDB server link\n *\n * @param dbName - Name of the mongodb database\n *\n * @param params - Connection parameters\n *\n * @param options - Connection options\n *\n * @example\n * ```\n * new MongoDBConnector(\n *    'mongodb://mongodb:27017/',\n *    'subito',\n *    {\n *      authSource: 'admin',\n *      replicaSet: 'rs0',\n *    }\n * );\n * ```\n *\n * @public\n */\n",
           "excerptTokens": [
             {
@@ -183,12 +183,12 @@
             }
           ],
           "releaseTag": "Public",
-          "name": "MongoDBConnector",
+          "name": "Connector",
           "preserveMemberOrder": false,
           "members": [
             {
               "kind": "Constructor",
-              "canonicalReference": "subito-connector-mongodb!MongoDBConnector:constructor(1)",
+              "canonicalReference": "subito-connector-mongodb!Connector:constructor(1)",
               "docComment": "/**\n * Constructs a new instance of the `Connector` class\n */\n",
               "excerptTokens": [
                 {
@@ -272,7 +272,7 @@
             },
             {
               "kind": "Method",
-              "canonicalReference": "subito-connector-mongodb!MongoDBConnector#connect:member(1)",
+              "canonicalReference": "subito-connector-mongodb!Connector#connect:member(1)",
               "docComment": "/**\n * Connect to the DB\n *\n * @returns \n *\n * @public\n */\n",
               "excerptTokens": [
                 {
@@ -307,7 +307,7 @@
             },
             {
               "kind": "Property",
-              "canonicalReference": "subito-connector-mongodb!MongoDBConnector#db:member",
+              "canonicalReference": "subito-connector-mongodb!Connector#db:member",
               "docComment": "",
               "excerptTokens": [
                 {
@@ -336,7 +336,7 @@
             },
             {
               "kind": "Property",
-              "canonicalReference": "subito-connector-mongodb!MongoDBConnector#dbName:member",
+              "canonicalReference": "subito-connector-mongodb!Connector#dbName:member",
               "docComment": "",
               "excerptTokens": [
                 {
@@ -366,7 +366,7 @@
             },
             {
               "kind": "Method",
-              "canonicalReference": "subito-connector-mongodb!MongoDBConnector#get:member(1)",
+              "canonicalReference": "subito-connector-mongodb!Connector#get:member(1)",
               "docComment": "/**\n * Get the connection\n *\n * @public\n */\n",
               "excerptTokens": [
                 {
@@ -396,7 +396,7 @@
             },
             {
               "kind": "Property",
-              "canonicalReference": "subito-connector-mongodb!MongoDBConnector#link:member",
+              "canonicalReference": "subito-connector-mongodb!Connector#link:member",
               "docComment": "",
               "excerptTokens": [
                 {
@@ -426,7 +426,7 @@
             },
             {
               "kind": "Property",
-              "canonicalReference": "subito-connector-mongodb!MongoDBConnector#options:member",
+              "canonicalReference": "subito-connector-mongodb!Connector#options:member",
               "docComment": "",
               "excerptTokens": [
                 {
@@ -456,7 +456,7 @@
             },
             {
               "kind": "Property",
-              "canonicalReference": "subito-connector-mongodb!MongoDBConnector#params:member",
+              "canonicalReference": "subito-connector-mongodb!Connector#params:member",
               "docComment": "",
               "excerptTokens": [
                 {
@@ -488,7 +488,7 @@
         },
         {
           "kind": "Class",
-          "canonicalReference": "subito-connector-mongodb!MongoDBHelper:class",
+          "canonicalReference": "subito-connector-mongodb!Helper:class",
           "docComment": "/**\n * MongoDB helper that can be usefull for some stuff.\n *\n * @public\n */\n",
           "excerptTokens": [
             {
@@ -497,12 +497,12 @@
             }
           ],
           "releaseTag": "Public",
-          "name": "MongoDBHelper",
+          "name": "Helper",
           "preserveMemberOrder": false,
           "members": [
             {
               "kind": "Method",
-              "canonicalReference": "subito-connector-mongodb!MongoDBHelper.getFilterPipeline:member(1)",
+              "canonicalReference": "subito-connector-mongodb!Helper.getFilterPipeline:member(1)",
               "docComment": "/**\n * Get a pipeline matching your filters\n *\n * @param filters - Filters you want apply into the pipeline\n *\n * @returns \n *\n * @public\n */\n",
               "excerptTokens": [
                 {
@@ -555,7 +555,7 @@
             },
             {
               "kind": "Method",
-              "canonicalReference": "subito-connector-mongodb!MongoDBHelper.newMongoId:member(1)",
+              "canonicalReference": "subito-connector-mongodb!Helper.newMongoId:member(1)",
               "docComment": "/**\n * Create a new mongo ID\n *\n * @param toString - Instead of create a mongo.ObjectId(), set to true to receive a string ID\n *\n * @returns \n *\n * @public\n */\n",
               "excerptTokens": [
                 {
@@ -610,7 +610,7 @@
         },
         {
           "kind": "Class",
-          "canonicalReference": "subito-connector-mongodb!MongoDBPaginator:class",
+          "canonicalReference": "subito-connector-mongodb!Paginator:class",
           "docComment": "/**\n * Class to implements the cursor paginator pattern\n *\n * @remarks\n *\n * Specs by relayjs {@link https://relay.dev/graphql/connections.htm} Default cusor is based on the \"createdAt\" field, you can anything that sortable & unique as \"slug\"\n *\n * @param args - Configure the paginator\n *\n * @public\n */\n",
           "excerptTokens": [
             {
@@ -628,12 +628,12 @@
             }
           ],
           "releaseTag": "Public",
-          "name": "MongoDBPaginator",
+          "name": "Paginator",
           "preserveMemberOrder": false,
           "members": [
             {
               "kind": "Constructor",
-              "canonicalReference": "subito-connector-mongodb!MongoDBPaginator:constructor(1)",
+              "canonicalReference": "subito-connector-mongodb!Paginator:constructor(1)",
               "docComment": "/**\n * Constructs a new instance of the `Paginator` class\n */\n",
               "excerptTokens": [
                 {
@@ -666,7 +666,7 @@
             },
             {
               "kind": "Property",
-              "canonicalReference": "subito-connector-mongodb!MongoDBPaginator#currentPage:member",
+              "canonicalReference": "subito-connector-mongodb!Paginator#currentPage:member",
               "docComment": "",
               "excerptTokens": [
                 {
@@ -695,7 +695,7 @@
             },
             {
               "kind": "Property",
-              "canonicalReference": "subito-connector-mongodb!MongoDBPaginator#field:member",
+              "canonicalReference": "subito-connector-mongodb!Paginator#field:member",
               "docComment": "",
               "excerptTokens": [
                 {
@@ -724,7 +724,7 @@
             },
             {
               "kind": "Property",
-              "canonicalReference": "subito-connector-mongodb!MongoDBPaginator#filters:member",
+              "canonicalReference": "subito-connector-mongodb!Paginator#filters:member",
               "docComment": "",
               "excerptTokens": [
                 {
@@ -754,7 +754,7 @@
             },
             {
               "kind": "Method",
-              "canonicalReference": "subito-connector-mongodb!MongoDBPaginator#get:member(1)",
+              "canonicalReference": "subito-connector-mongodb!Paginator#get:member(1)",
               "docComment": "/**\n * Get the paginator result\n *\n * @param docs - List of raw mongodb documents\n *\n * @returns \n *\n * @public\n */\n",
               "excerptTokens": [
                 {
@@ -815,7 +815,7 @@
             },
             {
               "kind": "Method",
-              "canonicalReference": "subito-connector-mongodb!MongoDBPaginator#getDocCursor:member(1)",
+              "canonicalReference": "subito-connector-mongodb!Paginator#getDocCursor:member(1)",
               "docComment": "/**\n * Get the cursor value from a doc\n *\n * @param doc - The doc used to create the cursor\n *\n * @returns \n *\n * @public\n */\n",
               "excerptTokens": [
                 {
@@ -863,7 +863,7 @@
             },
             {
               "kind": "Method",
-              "canonicalReference": "subito-connector-mongodb!MongoDBPaginator#getPipeline:member(1)",
+              "canonicalReference": "subito-connector-mongodb!Paginator#getPipeline:member(1)",
               "docComment": "/**\n * Get the pipeline to use for the aggregation\n *\n * @param pipeline - Custom pipeline used to match a sub-selection of docs\n *\n * @param reverse - Set to true if you want to sort by desc\n *\n * @returns \n *\n * @public\n */\n",
               "excerptTokens": [
                 {
@@ -927,7 +927,7 @@
             },
             {
               "kind": "Property",
-              "canonicalReference": "subito-connector-mongodb!MongoDBPaginator#hasNextPage:member",
+              "canonicalReference": "subito-connector-mongodb!Paginator#hasNextPage:member",
               "docComment": "",
               "excerptTokens": [
                 {
@@ -956,7 +956,7 @@
             },
             {
               "kind": "Property",
-              "canonicalReference": "subito-connector-mongodb!MongoDBPaginator#hasPreviousPage:member",
+              "canonicalReference": "subito-connector-mongodb!Paginator#hasPreviousPage:member",
               "docComment": "",
               "excerptTokens": [
                 {
@@ -985,7 +985,7 @@
             },
             {
               "kind": "Property",
-              "canonicalReference": "subito-connector-mongodb!MongoDBPaginator#limit:member",
+              "canonicalReference": "subito-connector-mongodb!Paginator#limit:member",
               "docComment": "",
               "excerptTokens": [
                 {
@@ -1014,7 +1014,7 @@
             },
             {
               "kind": "Property",
-              "canonicalReference": "subito-connector-mongodb!MongoDBPaginator#order:member",
+              "canonicalReference": "subito-connector-mongodb!Paginator#order:member",
               "docComment": "",
               "excerptTokens": [
                 {
@@ -1044,7 +1044,7 @@
             },
             {
               "kind": "Method",
-              "canonicalReference": "subito-connector-mongodb!MongoDBPaginator#setCursor:member(1)",
+              "canonicalReference": "subito-connector-mongodb!Paginator#setCursor:member(1)",
               "docComment": "/**\n * Set a custom cursor\n *\n * @param input - Configuration of the new cursor\n *\n * @returns \n *\n * @example\n * ```\n * // Use the \"slug\" field as cursor\n * paginator.setCursor({ field: 'slug', type: 'string' });\n * ```\n *\n * @public\n */\n",
               "excerptTokens": [
                 {
@@ -1092,7 +1092,7 @@
             },
             {
               "kind": "Method",
-              "canonicalReference": "subito-connector-mongodb!MongoDBPaginator#setPageInfo:member(1)",
+              "canonicalReference": "subito-connector-mongodb!Paginator#setPageInfo:member(1)",
               "docComment": "/**\n * Define page info from results\n *\n * @param input - The data needed to calculate page info\n *\n * @returns \n *\n * @public\n */\n",
               "excerptTokens": [
                 {
@@ -1140,7 +1140,7 @@
             },
             {
               "kind": "Property",
-              "canonicalReference": "subito-connector-mongodb!MongoDBPaginator#totalPage:member",
+              "canonicalReference": "subito-connector-mongodb!Paginator#totalPage:member",
               "docComment": "",
               "excerptTokens": [
                 {
@@ -1169,7 +1169,7 @@
             },
             {
               "kind": "Property",
-              "canonicalReference": "subito-connector-mongodb!MongoDBPaginator#totalResults:member",
+              "canonicalReference": "subito-connector-mongodb!Paginator#totalResults:member",
               "docComment": "",
               "excerptTokens": [
                 {
@@ -1198,7 +1198,7 @@
             },
             {
               "kind": "Property",
-              "canonicalReference": "subito-connector-mongodb!MongoDBPaginator#type:member",
+              "canonicalReference": "subito-connector-mongodb!Paginator#type:member",
               "docComment": "",
               "excerptTokens": [
                 {
@@ -1228,7 +1228,7 @@
             },
             {
               "kind": "Property",
-              "canonicalReference": "subito-connector-mongodb!MongoDBPaginator#value:member",
+              "canonicalReference": "subito-connector-mongodb!Paginator#value:member",
               "docComment": "",
               "excerptTokens": [
                 {
@@ -1265,12 +1265,12 @@
         },
         {
           "kind": "Class",
-          "canonicalReference": "subito-connector-mongodb!MongoDBRepository:class",
-          "docComment": "",
+          "canonicalReference": "subito-connector-mongodb!Repository:class",
+          "docComment": "/**\n * Abstract class to implement mongodb repository\n *\n * @public\n */\n",
           "excerptTokens": [
             {
               "kind": "Content",
-              "text": "declare class Repository extends "
+              "text": "declare abstract class Repository extends "
             },
             {
               "kind": "Reference",
@@ -1292,12 +1292,12 @@
             }
           ],
           "releaseTag": "Public",
-          "name": "MongoDBRepository",
+          "name": "Repository",
           "preserveMemberOrder": false,
           "members": [
             {
               "kind": "Method",
-              "canonicalReference": "subito-connector-mongodb!MongoDBRepository#canBeInserted:member(1)",
+              "canonicalReference": "subito-connector-mongodb!Repository#canBeInserted:member(1)",
               "docComment": "/**\n * Check if the doc can be inserted into the DB\n *\n * @param input - The new doc to checked\n *\n * @returns \n *\n * @public\n */\n",
               "excerptTokens": [
                 {
@@ -1350,7 +1350,7 @@
             },
             {
               "kind": "Method",
-              "canonicalReference": "subito-connector-mongodb!MongoDBRepository#canBeUpdated:member(1)",
+              "canonicalReference": "subito-connector-mongodb!Repository#canBeUpdated:member(1)",
               "docComment": "/**\n * Check if the doc can be updated\n *\n * @param input - Operation to execute\n *\n * @returns \n *\n * @public\n */\n",
               "excerptTokens": [
                 {
@@ -1403,7 +1403,7 @@
             },
             {
               "kind": "Method",
-              "canonicalReference": "subito-connector-mongodb!MongoDBRepository#createDoc:member(1)",
+              "canonicalReference": "subito-connector-mongodb!Repository#createDoc:member(1)",
               "docComment": "/**\n * Insert a new doc\n *\n * @param input - The new doc to insert\n *\n * @returns \n *\n * @public\n */\n",
               "excerptTokens": [
                 {
@@ -1465,7 +1465,7 @@
             },
             {
               "kind": "Method",
-              "canonicalReference": "subito-connector-mongodb!MongoDBRepository#createManyDocs:member(1)",
+              "canonicalReference": "subito-connector-mongodb!Repository#createManyDocs:member(1)",
               "docComment": "/**\n * Create a list of documents\n *\n * @param arr - List of the docs to insert\n *\n * @returns \n *\n * @public\n */\n",
               "excerptTokens": [
                 {
@@ -1531,7 +1531,7 @@
             },
             {
               "kind": "Property",
-              "canonicalReference": "subito-connector-mongodb!MongoDBRepository#cursor:member",
+              "canonicalReference": "subito-connector-mongodb!Repository#cursor:member",
               "docComment": "/**\n * The cusor definition used by the Paginator\n */\n",
               "excerptTokens": [
                 {
@@ -1561,7 +1561,7 @@
             },
             {
               "kind": "Method",
-              "canonicalReference": "subito-connector-mongodb!MongoDBRepository#deleteById:member(1)",
+              "canonicalReference": "subito-connector-mongodb!Repository#deleteById:member(1)",
               "docComment": "/**\n * Delete a document by its ID (soft)\n *\n * @remarks\n *\n * It makes a soft deletion, the doc still exists into the db with a field \"deleteAt\"\n *\n * @param id - ID of the document to delete\n *\n * @returns \n *\n * @public\n */\n",
               "excerptTokens": [
                 {
@@ -1614,7 +1614,7 @@
             },
             {
               "kind": "Method",
-              "canonicalReference": "subito-connector-mongodb!MongoDBRepository#deleteManyById:member(1)",
+              "canonicalReference": "subito-connector-mongodb!Repository#deleteManyById:member(1)",
               "docComment": "/**\n * Delete a list of document by their IDs (soft)\n *\n * @remarks\n *\n * It makes a soft deletion, docs still exist into the db with a field \"deleteAt\"\n *\n * @param ids - An array of doc id\n *\n * @returns \n */\n",
               "excerptTokens": [
                 {
@@ -1671,7 +1671,7 @@
             },
             {
               "kind": "Method",
-              "canonicalReference": "subito-connector-mongodb!MongoDBRepository#findByCursor:member(1)",
+              "canonicalReference": "subito-connector-mongodb!Repository#findByCursor:member(1)",
               "docComment": "/**\n * Get a list of paginated documents\n *\n * @param input - Define how you want to paginate\n *\n * @param pipeline - Custom pipeline to get a subset of docs\n *\n * @returns \n *\n * @public\n */\n",
               "excerptTokens": [
                 {
@@ -1750,7 +1750,7 @@
             },
             {
               "kind": "Method",
-              "canonicalReference": "subito-connector-mongodb!MongoDBRepository#findOneByFields:member(1)",
+              "canonicalReference": "subito-connector-mongodb!Repository#findOneByFields:member(1)",
               "docComment": "/**\n * Find one doc by specifics fields\n *\n * @param fields - The fields to match\n *\n * @param options - Data source options\n *\n * @returns \n *\n * @public\n */\n",
               "excerptTokens": [
                 {
@@ -1829,7 +1829,7 @@
             },
             {
               "kind": "Method",
-              "canonicalReference": "subito-connector-mongodb!MongoDBRepository#findOneBySlug:member(1)",
+              "canonicalReference": "subito-connector-mongodb!Repository#findOneBySlug:member(1)",
               "docComment": "/**\n * Find a doc by its slug\n *\n * @param slug - The slug to match\n *\n * @param options - Data source options\n *\n * @returns \n *\n * @public\n */\n",
               "excerptTokens": [
                 {
@@ -1907,7 +1907,7 @@
             },
             {
               "kind": "Method",
-              "canonicalReference": "subito-connector-mongodb!MongoDBRepository#getDate:member(1)",
+              "canonicalReference": "subito-connector-mongodb!Repository#getDate:member(1)",
               "docComment": "/**\n * Get the current date using Datte class from subito-lib\n *\n * @returns \n *\n * @public\n */\n",
               "excerptTokens": [
                 {
@@ -1938,7 +1938,7 @@
             },
             {
               "kind": "Method",
-              "canonicalReference": "subito-connector-mongodb!MongoDBRepository#hardDeleteById:member(1)",
+              "canonicalReference": "subito-connector-mongodb!Repository#hardDeleteById:member(1)",
               "docComment": "/**\n * Delete a document by its ID (hard)\n *\n * @remarks\n *\n * It removes the doc from the DB, still prefer a soft deletion with {@link Repository.deleteById}\n *\n * @param id - ID of the document to HARD delete\n *\n * @returns \n *\n * @public\n */\n",
               "excerptTokens": [
                 {
@@ -1991,7 +1991,7 @@
             },
             {
               "kind": "Method",
-              "canonicalReference": "subito-connector-mongodb!MongoDBRepository#hardDeleteManyById:member(1)",
+              "canonicalReference": "subito-connector-mongodb!Repository#hardDeleteManyById:member(1)",
               "docComment": "/**\n * Delete a document by its ID (hard)\n *\n * @remarks\n *\n * It removes docs from the DB, still prefer a soft deletion {@link Repository.deleteManyById}\n *\n * @param ids - An array of doc id\n *\n * @returns \n *\n * @public\n */\n",
               "excerptTokens": [
                 {
@@ -2048,7 +2048,7 @@
             },
             {
               "kind": "Method",
-              "canonicalReference": "subito-connector-mongodb!MongoDBRepository#prepareNewDoc:member(1)",
+              "canonicalReference": "subito-connector-mongodb!Repository#prepareNewDoc:member(1)",
               "docComment": "/**\n * Add needed data to the doc before insertion\n *\n * @param doc - The doc to insert\n *\n * @returns \n *\n * @public\n */\n",
               "excerptTokens": [
                 {
@@ -2097,7 +2097,7 @@
             },
             {
               "kind": "Method",
-              "canonicalReference": "subito-connector-mongodb!MongoDBRepository#updateDoc:member(1)",
+              "canonicalReference": "subito-connector-mongodb!Repository#updateDoc:member(1)",
               "docComment": "/**\n * Update a doc with its id\n *\n * @param input - Input values\n *\n * @returns \n *\n * @public\n */\n",
               "excerptTokens": [
                 {

@@ -3,7 +3,7 @@
  *
  * @packageDocumentation
  */
-export { default as MongoDBConnector } from './Connector';
-export { default as MongoDBHelper } from './Helper';
-export { default as MongoDBRepository } from './Repository';
-export { default as MongoDBPaginator } from './Paginator';
+export { default as Connector } from './Connector';
+export { default as Helper } from './Helper';
+export { default as Repository } from './Repository';
+export { default as Paginator } from './Paginator';
