@@ -1,12 +1,40 @@
 import { Calculator, Datte } from 'subito-lib';
 import type { ParseType } from 'subito-lib';
 import type { Document } from 'mongodb';
-import type {
-  IPaginator, PaginatorOrder, IPaginatorInput, IPageInfoInput, ICursor, CursorEdge,
-} from './Paginator.d';
-import type { Pipeline } from './Repository.d';
+import type { Pipeline } from './Repository';
 import Helper from './Helper';
-import type { IFilterPipelineInput } from './Helper.d';
+import type { IFilterPipelineInput } from './Helper';
+
+export interface IPaginatorInput {
+  first: number
+  last: number
+  before: string
+  after: string
+  filters: IFilterPipelineInput
+}
+
+export interface IPageInfoInput {
+  total: number
+  cursored: number
+}
+
+export interface IPaginator {
+  // config: Function
+  setPageInfo: Function
+  getPipeline: Function
+}
+
+export type PaginatorOrder = 'ASC' | 'DESC';
+
+export type CursorEdge = {
+  cursor: string
+  node: Document
+}
+
+export interface ICursor {
+  field: string
+  type: ParseType
+}
 
 /**
  * Class to implements the cursor paginator pattern

@@ -1,7 +1,20 @@
 import mongodb from 'mongodb';
-import type {
-  MongoDBLink, MongoDBName, MongoDBOptions, MongoDBParams,
-} from './Connector.d';
+
+/** @public */
+export type MongoDBLink = string
+
+/** @public */
+export type MongoDBName = string
+
+/** @public */
+export type MongoDBParams = {
+  [key: string]: (string | number | boolean)
+}
+
+/** @public */
+export type MongoDBOptions = {
+  [key: string]: (string | number | boolean)
+}
 
 /**
  * Create a new MongoDB connection
