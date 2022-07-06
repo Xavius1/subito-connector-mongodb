@@ -1,17 +1,54 @@
 import mongodb from 'mongodb';
 
-/** @public */
+/**
+ * MongoDB connection URI without name & params
+ *
+ * @example
+ * ```
+ * mongodb://user:pass&@mongodb-eu-fr-west:27017,mongodb-eu-fr-est:27017,mongodb-eu-be:2017/
+ * ```
+ *
+ * @public
+ */
 export type MongoDBLink = string
 
-/** @public */
+/**
+ * Name of the database
+ *
+ * @public
+ */
 export type MongoDBName = string
 
-/** @public */
+/**
+ * Connection params {@link https://www.mongodb.com/docs/drivers/node/current/fundamentals/connection/connect/#std-label-node-connect-to-mongodb}
+ *
+ * @example
+ * ```
+ * {
+ *   authSource: 'admin',
+ *   replicaSet: 'rs0',
+ * }
+ * ```
+ *
+ * @public
+ */
 export type MongoDBParams = {
   [key: string]: (string | number | boolean)
 }
 
-/** @public */
+/**
+ * Connection options {@link https://www.mongodb.com/docs/drivers/node/current/fundamentals/connection/connection-options/}
+ *
+ * @example
+ * ```
+ * {
+ *   useNewUrlParser: true,
+ *   useUnifiedTopology: true,
+ *   keepAlive: true,
+ * }
+ * ```
+ * @public
+ */
 export type MongoDBOptions = {
   [key: string]: (string | number | boolean)
 }
