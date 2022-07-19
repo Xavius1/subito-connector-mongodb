@@ -1,9 +1,9 @@
 import { Fields, MongoDataSource, Options } from 'apollo-datasource-mongodb';
 import { Datte } from 'subito-lib';
 import type { Document, ObjectId } from 'mongodb';
-import Helper from './Helper';
-import Paginator from './Paginator';
-import type { ICursor, IPaginatorInput } from './Paginator';
+import Helper from './Helper.js';
+import Paginator from './Paginator.js';
+import type { ICursor, IPaginatorInput } from './Paginator.js';
 
 /** @public */
 export type { Document } from 'mongodb';

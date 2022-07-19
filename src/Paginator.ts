@@ -1,8 +1,8 @@
 import { Calculator, Datte } from 'subito-lib';
 import type { ParseType } from 'subito-lib';
-import type { Document, Pipeline } from './Repository';
-import Helper from './Helper';
-import type { IFilterPipelineInput } from './Helper';
+import type { Document, Pipeline } from './Repository.js';
+import Helper from './Helper.js';
+import type { IFilterPipelineInput } from './Helper.js';
 
 /** @public */
 export interface IPaginatorInput {
@@ -38,7 +38,7 @@ export type CursorEdge = {
 /** @public */
 export interface ICursor {
   field: string
-  type: ParseType
+  type: ParseType | 'Date'
 }
 
 /**
@@ -62,7 +62,7 @@ class Paginator implements IPaginator {
 
   protected filters: IFilterPipelineInput;
 
-  protected type: ParseType = 'Date';
+  protected type: ParseType | 'Date' = 'Date';
 
   protected value: string | null = null;
 

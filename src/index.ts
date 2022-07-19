@@ -3,19 +3,19 @@
  *
  * @packageDocumentation
  */
-export { default as Connector } from './Connector';
-export { default as Helper } from './Helper';
-export { default as Repository } from './Repository';
-export { default as Paginator } from './Paginator';
+export { default as Connector } from './Connector.js';
+export { default as Helper } from './Helper.js';
+export { default as Repository } from './Repository.js';
+export { default as Paginator } from './Paginator.js';
 
 // Types
 export type {
   MongoDBLink, MongoDBName, MongoDBParams, MongoDBOptions,
-} from './Connector';
-export type { MatchFilter, IFilterPipelineInput, IFiltersPipeline } from './Helper';
+} from './Connector.js';
+export type { MatchFilter, IFilterPipelineInput, IFiltersPipeline } from './Helper.js';
 export type {
   IPaginatorInput, IPageInfoInput, IPaginator, PaginatorOrder, CursorEdge, ICursor,
-} from './Paginator';
+} from './Paginator.js';
 export type {
   MongoId, MongoIdExt, MongoIdStr, IDocInput, IDocUpdateInput, DocumentResult, Pipeline, Document,
-} from './Repository';
+} from './Repository.js';

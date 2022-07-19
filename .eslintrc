@@ -28,10 +28,6 @@
   "ignorePatterns": ["dist/", "lib/"],
   "settings": {
     "import/resolver": {
-      "node": {
-        "extensions": [".ts"],
-        "moduleDirectory": ["node_modules", "src/"],
-      },
       "typescript": {} // this loads <rootdir>/tsconfig.json to eslint
     }
   }
