@@ -51,7 +51,7 @@ export interface ICursor {
     // (undocumented)
     field: string;
     // (undocumented)
-    type: ParseType;
+    type: ParseType | 'Date';
 }
 
 // @public (undocumented)
@@ -227,7 +227,7 @@ export class Paginator implements IPaginator {
     // (undocumented)
     protected totalResults: number;
     // (undocumented)
-    protected type: ParseType;
+    protected type: ParseType | 'Date';
     // (undocumented)
     protected value: string | null;
 }

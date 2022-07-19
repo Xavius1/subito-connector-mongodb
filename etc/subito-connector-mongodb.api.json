@@ -729,6 +729,10 @@
                 },
                 {
                   "kind": "Content",
+                  "text": " | 'Date'"
+                },
+                {
+                  "kind": "Content",
                   "text": ";"
                 }
               ],
@@ -738,7 +742,7 @@
               "name": "type",
               "propertyTypeTokenRange": {
                 "startIndex": 1,
-                "endIndex": 2
+                "endIndex": 3
               }
             }
           ],
@@ -2213,6 +2217,10 @@
                 },
                 {
                   "kind": "Content",
+                  "text": " | 'Date'"
+                },
+                {
+                  "kind": "Content",
                   "text": ";"
                 }
               ],
@@ -2222,7 +2230,7 @@
               "name": "type",
               "propertyTypeTokenRange": {
                 "startIndex": 1,
-                "endIndex": 2
+                "endIndex": 3
               },
               "isStatic": false,
               "isProtected": true
@@ -2754,7 +2762,7 @@
                 },
                 {
                   "kind": "Content",
-                  "text": "<{\n        edges: import(\"./Paginator\")."
+                  "text": "<{\n        edges: import(\"./Paginator.js\")."
                 },
                 {
                   "kind": "Reference",
