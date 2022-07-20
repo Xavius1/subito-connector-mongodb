@@ -327,6 +327,21 @@ abstract class Repository extends MongoDataSource<Document> {
 
     return paginator.get(data[0].cursored.current);
   }
+
+  /**
+   * Get all documents without pagination
+   *
+   * @remarks
+   * To use with caution, because it can be very heavy & expensive
+   *
+   * @param options - Some options
+   * @returns
+   *
+   * @public
+   */
+  async findAll({ sort = 'createdAt', order = 'ASC' }): Promise<DocumentResult[]> {
+    return this.collection.find({}, { sort: { [sort]: (order === 'ASC' ? 1 : -1) } }).toArray();
+  }
 }
 
 export default Repository;

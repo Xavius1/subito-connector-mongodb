@@ -2730,6 +2730,67 @@
             },
             {
               "kind": "Method",
+              "canonicalReference": "subito-connector-mongodb!Repository#findAll:member(1)",
+              "docComment": "/**\n * Get all documents without pagination\n *\n * @remarks\n *\n * To use with caution, because it can be very heavy & expensive\n *\n * @param options - Some options\n *\n * @returns \n *\n * @public\n */\n",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "findAll({ sort, order }: "
+                },
+                {
+                  "kind": "Content",
+                  "text": "{\n        sort?: string | undefined;\n        order?: string | undefined;\n    }"
+                },
+                {
+                  "kind": "Content",
+                  "text": "): "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "Promise",
+                  "canonicalReference": "!Promise:interface"
+                },
+                {
+                  "kind": "Content",
+                  "text": "<"
+                },
+                {
+                  "kind": "Reference",
+                  "text": "DocumentResult",
+                  "canonicalReference": "subito-connector-mongodb!DocumentResult:type"
+                },
+                {
+                  "kind": "Content",
+                  "text": "[]>"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isStatic": false,
+              "returnTypeTokenRange": {
+                "startIndex": 3,
+                "endIndex": 7
+              },
+              "releaseTag": "Public",
+              "isProtected": false,
+              "overloadIndex": 1,
+              "parameters": [
+                {
+                  "parameterName": "{ sort, order }",
+                  "parameterTypeTokenRange": {
+                    "startIndex": 1,
+                    "endIndex": 2
+                  },
+                  "isOptional": false
+                }
+              ],
+              "isOptional": false,
+              "name": "findAll"
+            },
+            {
+              "kind": "Method",
               "canonicalReference": "subito-connector-mongodb!Repository#findByCursor:member(1)",
               "docComment": "/**\n * Get a list of paginated documents\n *\n * @param input - Define how you want to paginate\n *\n * @param pipeline - Custom pipeline to get a subset of docs\n *\n * @returns \n *\n * @public\n */\n",
               "excerptTokens": [

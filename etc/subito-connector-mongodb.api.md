@@ -248,6 +248,10 @@ export abstract class Repository extends MongoDataSource<Document_2> {
     protected cursor: ICursor;
     deleteById(id: MongoIdExt): Promise<any>;
     deleteManyById(ids: MongoIdExt[]): Promise<any>;
+    findAll({ sort, order }: {
+        sort?: string | undefined;
+        order?: string | undefined;
+    }): Promise<DocumentResult[]>;
     findByCursor(input: IPaginatorInput, pipeline: Pipeline): Promise<{
         edges: CursorEdge[];
         pageInfo: {
