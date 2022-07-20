@@ -59,9 +59,9 @@ export interface IDocInput {
     // (undocumented)
     [key: string]: any;
     // (undocumented)
-    id: never;
+    id?: never;
     // (undocumented)
-    _id: never;
+    _id?: never;
     // (undocumented)
     slug?: string;
 }
@@ -97,7 +97,6 @@ export interface IDocUpdateInput {
             [key: string]: any;
         };
         $unset?: {
-            _id: never;
             [key: string]: '';
         };
     };

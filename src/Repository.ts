@@ -28,8 +28,8 @@ export type MongoIdStr = string;
 
 /** @public */
 export interface IDocInput {
-  _id: never
-  id: never
+  _id?: never
+  id?: never
   slug?: string
   [key: string]: any
 }
@@ -47,7 +47,6 @@ export interface IDocUpdateInput {
     $set?: IDocInput
     $setOnInsert?: { [key: string]: any }
     $unset?: {
-      _id: never
       [key: string]: ''
     }
   }

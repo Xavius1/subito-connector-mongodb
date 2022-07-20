@@ -769,7 +769,7 @@
               "excerptTokens": [
                 {
                   "kind": "Content",
-                  "text": "_id: "
+                  "text": "_id?: "
                 },
                 {
                   "kind": "Content",
@@ -781,7 +781,7 @@
                 }
               ],
               "isReadonly": false,
-              "isOptional": false,
+              "isOptional": true,
               "releaseTag": "Public",
               "name": "_id",
               "propertyTypeTokenRange": {
@@ -839,7 +839,7 @@
               "excerptTokens": [
                 {
                   "kind": "Content",
-                  "text": "id: "
+                  "text": "id?: "
                 },
                 {
                   "kind": "Content",
@@ -851,7 +851,7 @@
                 }
               ],
               "isReadonly": false,
-              "isOptional": false,
+              "isOptional": true,
               "releaseTag": "Public",
               "name": "id",
               "propertyTypeTokenRange": {
@@ -951,7 +951,7 @@
                 },
                 {
                   "kind": "Content",
-                  "text": ";\n        $setOnInsert?: {\n            [key: string]: any;\n        };\n        $unset?: {\n            _id: never;\n            [key: string]: '';\n        };\n    }"
+                  "text": ";\n        $setOnInsert?: {\n            [key: string]: any;\n        };\n        $unset?: {\n            [key: string]: '';\n        };\n    }"
                 },
                 {
                   "kind": "Content",
