@@ -4,6 +4,7 @@
 
 ```ts
 
+import { Collection } from 'mongodb';
 import { Document as Document_2 } from 'mongodb';
 import { Fields } from 'apollo-datasource-mongodb';
 import mongo from 'mongodb';
@@ -11,6 +12,8 @@ import { MongoDataSource } from 'apollo-datasource-mongodb';
 import type { ObjectId } from 'mongodb';
 import { Options } from 'apollo-datasource-mongodb';
 import type { ParseType } from 'subito-lib';
+
+export { Collection }
 
 // @public
 export class Connector {

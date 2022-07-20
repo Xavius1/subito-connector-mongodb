@@ -6,7 +6,7 @@ import Paginator from './Paginator.js';
 import type { ICursor, IPaginatorInput } from './Paginator.js';
 
 /** @public */
-export type { Document } from 'mongodb';
+export type { Collection, Document } from 'mongodb';
 
 /**
  * Classic MongoDB ID

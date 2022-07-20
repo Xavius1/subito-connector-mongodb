@@ -17,5 +17,13 @@ export type {
   IPaginatorInput, IPageInfoInput, IPaginator, PaginatorOrder, CursorEdge, ICursor,
 } from './Paginator.js';
 export type {
-  MongoId, MongoIdExt, MongoIdStr, IDocInput, IDocUpdateInput, DocumentResult, Pipeline, Document,
+  Collection,
+  Document,
+  DocumentResult,
+  IDocInput,
+  IDocUpdateInput,
+  MongoId,
+  MongoIdExt,
+  MongoIdStr,
+  Pipeline,
 } from './Repository.js';
