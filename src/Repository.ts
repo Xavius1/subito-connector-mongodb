@@ -1,5 +1,5 @@
 import { Fields, MongoDataSource, Options } from 'apollo-datasource-mongodb';
-import { Datte } from 'subito-lib';
+import { Datte, ParseType } from 'subito-lib';
 import type { Document, ObjectId } from 'mongodb';
 import Helper from './Helper.js';
 import Paginator from './Paginator.js';
@@ -32,6 +32,13 @@ export interface IDocInput {
   id?: never
   slug?: string
   [key: string]: any
+}
+
+export enum GenericCursorEnum {
+  ID,
+  CREATION_DATE,
+  DELETION_DATE,
+  SLUG
 }
 
 /** @public */
@@ -102,6 +109,46 @@ abstract class Repository extends MongoDataSource<Document> {
   public getDate(): Date { // eslint-disable-line class-methods-use-this
     const d = new Datte();
     return d.toDate();
+  }
+
+  /**
+   * Set a generic cursor
+   *
+   * @param name - the name of the cursor
+   * @returns
+   *
+   * @public
+   */
+  public setGenericCursor(name: GenericCursorEnum) {
+    let cursor = null;
+    let type: ParseType | 'Date' = 'Date';
+
+    switch (name) {
+      case GenericCursorEnum.CREATION_DATE:
+        cursor = 'createdAt';
+        break;
+      case GenericCursorEnum.DELETION_DATE:
+        cursor = 'deletedAt';
+        break;
+      case GenericCursorEnum.SLUG:
+        cursor = 'slug';
+        type = undefined;
+        break;
+      case GenericCursorEnum.ID:
+        cursor = '_id';
+        type = undefined;
+        break;
+      default:
+    }
+
+    if (cursor) {
+      this.cursor = {
+        field: cursor,
+        type,
+      };
+    }
+
+    return this;
   }
 
   /**

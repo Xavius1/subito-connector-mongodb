@@ -3217,6 +3217,54 @@
             },
             {
               "kind": "Method",
+              "canonicalReference": "subito-connector-mongodb!Repository#setGenericCursor:member(1)",
+              "docComment": "/**\n * Set a generic cursor\n *\n * @param name - the name of the cursor\n *\n * @returns \n *\n * @public\n */\n",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "setGenericCursor(name: "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "GenericCursorEnum",
+                  "canonicalReference": "subito-connector-mongodb!GenericCursorEnum:enum"
+                },
+                {
+                  "kind": "Content",
+                  "text": "): "
+                },
+                {
+                  "kind": "Content",
+                  "text": "this"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isStatic": false,
+              "returnTypeTokenRange": {
+                "startIndex": 3,
+                "endIndex": 4
+              },
+              "releaseTag": "Public",
+              "isProtected": false,
+              "overloadIndex": 1,
+              "parameters": [
+                {
+                  "parameterName": "name",
+                  "parameterTypeTokenRange": {
+                    "startIndex": 1,
+                    "endIndex": 2
+                  },
+                  "isOptional": false
+                }
+              ],
+              "isOptional": false,
+              "name": "setGenericCursor"
+            },
+            {
+              "kind": "Method",
               "canonicalReference": "subito-connector-mongodb!Repository#updateDoc:member(1)",
               "docComment": "/**\n * Update a doc with its id\n *\n * @param input - Input values\n *\n * @returns \n *\n * @public\n */\n",
               "excerptTokens": [

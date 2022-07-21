@@ -273,6 +273,8 @@ export abstract class Repository extends MongoDataSource<Document_2> {
     hardDeleteById(id: MongoIdExt): Promise<any>;
     hardDeleteManyById(ids: MongoIdExt[]): Promise<any>;
     prepareNewDoc(doc: IDocInput): Document_2;
+    // Warning: (ae-forgotten-export) The symbol "GenericCursorEnum" needs to be exported by the entry point index.d.ts
+    setGenericCursor(name: GenericCursorEnum): this;
     updateDoc(input: IDocUpdateInput): Promise<DocumentResult>;
 }
 
