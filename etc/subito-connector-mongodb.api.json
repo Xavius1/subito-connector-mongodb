@@ -551,6 +551,31 @@
           }
         },
         {
+          "kind": "TypeAlias",
+          "canonicalReference": "subito-connector-mongodb!GenericCursors:type",
+          "docComment": "",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "export declare type GenericCursors = "
+            },
+            {
+              "kind": "Content",
+              "text": "'ID' | 'CREATION_DATE' | 'DELETION_DATE' | 'SLUG'"
+            },
+            {
+              "kind": "Content",
+              "text": ";"
+            }
+          ],
+          "releaseTag": "Public",
+          "name": "GenericCursors",
+          "typeTokenRange": {
+            "startIndex": 1,
+            "endIndex": 2
+          }
+        },
+        {
           "kind": "Class",
           "canonicalReference": "subito-connector-mongodb!Helper:class",
           "docComment": "/**\n * MongoDB helper that can be usefull for some stuff.\n *\n * @public\n */\n",
@@ -3226,8 +3251,8 @@
                 },
                 {
                   "kind": "Reference",
-                  "text": "GenericCursorEnum",
-                  "canonicalReference": "subito-connector-mongodb!GenericCursorEnum:enum"
+                  "text": "GenericCursors",
+                  "canonicalReference": "subito-connector-mongodb!GenericCursors:type"
                 },
                 {
                   "kind": "Content",

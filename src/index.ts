@@ -20,6 +20,7 @@ export type {
   Collection,
   Document,
   DocumentResult,
+  GenericCursors,
   IDocInput,
   IDocUpdateInput,
   MongoId,

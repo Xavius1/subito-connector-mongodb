@@ -34,12 +34,7 @@ export interface IDocInput {
   [key: string]: any
 }
 
-export enum GenericCursorEnum {
-  ID,
-  CREATION_DATE,
-  DELETION_DATE,
-  SLUG
-}
+export type GenericCursors = 'ID' | 'CREATION_DATE' | 'DELETION_DATE' | 'SLUG';
 
 /** @public */
 export interface IDocUpdateInput {
@@ -119,22 +114,22 @@ abstract class Repository extends MongoDataSource<Document> {
    *
    * @public
    */
-  public setGenericCursor(name: GenericCursorEnum) {
+  public setGenericCursor(name: GenericCursors) {
     let cursor = null;
     let type: ParseType | 'Date' = 'Date';
 
     switch (name) {
-      case GenericCursorEnum.CREATION_DATE:
+      case 'CREATION_DATE':
         cursor = 'createdAt';
         break;
-      case GenericCursorEnum.DELETION_DATE:
+      case 'DELETION_DATE':
         cursor = 'deletedAt';
         break;
-      case GenericCursorEnum.SLUG:
+      case 'SLUG':
         cursor = 'slug';
         type = undefined;
         break;
-      case GenericCursorEnum.ID:
+      case 'ID':
         cursor = '_id';
         type = undefined;
         break;

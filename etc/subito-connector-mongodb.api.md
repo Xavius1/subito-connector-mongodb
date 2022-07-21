@@ -43,6 +43,9 @@ export { Document_2 as Document }
 // @public (undocumented)
 export type DocumentResult = Document_2 | null | undefined;
 
+// @public (undocumented)
+export type GenericCursors = 'ID' | 'CREATION_DATE' | 'DELETION_DATE' | 'SLUG';
+
 // @public
 export class Helper {
     static getFilterPipeline(filters: IFilterPipelineInput): IFiltersPipeline | null;
@@ -273,8 +276,7 @@ export abstract class Repository extends MongoDataSource<Document_2> {
     hardDeleteById(id: MongoIdExt): Promise<any>;
     hardDeleteManyById(ids: MongoIdExt[]): Promise<any>;
     prepareNewDoc(doc: IDocInput): Document_2;
-    // Warning: (ae-forgotten-export) The symbol "GenericCursorEnum" needs to be exported by the entry point index.d.ts
-    setGenericCursor(name: GenericCursorEnum): this;
+    setGenericCursor(name: GenericCursors): this;
     updateDoc(input: IDocUpdateInput): Promise<DocumentResult>;
 }
 
