@@ -101,13 +101,16 @@ class Connector {
     this.db = null;
     this.link = link;
     this.dbName = dbName;
-    this.params = Object.entries(params).reduce(
-      (str, [param, value]) => {
-        str += `${param}=${value}&`; // eslint-disable-line no-param-reassign
-        return str;
-      },
-      '?',
-    );
+    this.params = Object
+      .entries(params)
+      .reduce(
+        (str, [param, value]) => {
+          str += `${param}=${value}&`; // eslint-disable-line no-param-reassign
+          return str;
+        },
+        '?',
+      )
+      .slice(0, -1);
     const defaultOptions = {
       useNewUrlParser: true,
       useUnifiedTopology: true,
