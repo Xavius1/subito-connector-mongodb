@@ -353,21 +353,22 @@ abstract class Repository extends MongoDataSource<Document> {
    *
    * @public
    */
-  public async findByCursor(input: IPaginatorInput, pipeline: Pipeline) {
+  public async findByCursor(input: IPaginatorInput, pipeline: Pipeline = []) {
     const paginator = new Paginator(input);
     paginator.setCursor(this.cursor);
 
-    const data = await this.collection.aggregate(
+    const [data] = await this.collection.aggregate(
       paginator.getPipeline(pipeline),
       { allowDiskUse: true },
     ).toArray();
 
     paginator.setPageInfo({
-      total: (data[0].total[0]?.counter || 0),
-      cursored: (data[0].cursored.total[0].counter || 0),
+      total: (data.total[0]?.counter || 0),
+      cursored: (data.cursored[0]?.counter || 0),
+      current: (data.current?.length || 0),
     });
 
-    return paginator.get(data[0].cursored.current);
+    return paginator.get(data.current);
   }
 
   /**

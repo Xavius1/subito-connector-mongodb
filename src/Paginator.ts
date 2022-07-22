@@ -17,6 +17,7 @@ export interface IPaginatorInput {
 export interface IPageInfoInput {
   total: number
   cursored: number
+  current: number
 }
 
 /** @public */
@@ -121,9 +122,9 @@ class Paginator implements IPaginator {
    *
    * @public
    */
-  public setPageInfo({ total = 0, cursored = 0 }: IPageInfoInput) {
+  public setPageInfo({ total = 0, cursored = 0, current = 0 }: IPageInfoInput) {
     const { limit, order } = this;
-    const previousResults = (total - cursored);
+    const previousResults = (cursored - current);
     this.totalResults = total;
     this.hasNextPage = (cursored - limit > 0);
     this.hasPreviousPage = (previousResults > 0);
@@ -256,24 +257,21 @@ class Paginator implements IPaginator {
       filtersPipeline.push({ $match: filters });
     }
 
+    const matcher = this.makeMatcher(reverse);
+
     return [
       ...filtersPipeline,
       ...customPipeline,
       { $sort: { [field]: (order === 'DESC' ? -1 : 1) } },
       {
         $facet: {
+          current: Paginator.pipelineCleaner([
+            matcher,
+            { $limit: limit },
+          ]),
           cursored: Paginator.pipelineCleaner([
-            this.makeMatcher(reverse),
-            {
-              $facet: {
-                total: [
-                  { $group: { _id: 1, counter: { $sum: 1 } } },
-                ],
-                current: [
-                  { $limit: limit },
-                ],
-              },
-            },
+            matcher,
+            { $group: { _id: 1, counter: { $sum: 1 } } },
           ]),
           total: [
             { $group: { _id: 1, counter: { $sum: 1 } } },
