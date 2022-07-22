@@ -1151,6 +1151,33 @@
           "members": [
             {
               "kind": "PropertySignature",
+              "canonicalReference": "subito-connector-mongodb!IPageInfoInput#current:member",
+              "docComment": "",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "current: "
+                },
+                {
+                  "kind": "Content",
+                  "text": "number"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isReadonly": false,
+              "isOptional": false,
+              "releaseTag": "Public",
+              "name": "current",
+              "propertyTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              }
+            },
+            {
+              "kind": "PropertySignature",
               "canonicalReference": "subito-connector-mongodb!IPageInfoInput#cursored:member",
               "docComment": "",
               "excerptTokens": [
@@ -2127,7 +2154,7 @@
               "excerptTokens": [
                 {
                   "kind": "Content",
-                  "text": "setPageInfo({ total, cursored }: "
+                  "text": "setPageInfo({ total, cursored, current }: "
                 },
                 {
                   "kind": "Reference",
@@ -2157,7 +2184,7 @@
               "overloadIndex": 1,
               "parameters": [
                 {
-                  "parameterName": "{ total, cursored }",
+                  "parameterName": "{ total, cursored, current }",
                   "parameterTypeTokenRange": {
                     "startIndex": 1,
                     "endIndex": 2
@@ -2830,7 +2857,7 @@
                 },
                 {
                   "kind": "Content",
-                  "text": ", pipeline: "
+                  "text": ", pipeline?: "
                 },
                 {
                   "kind": "Reference",
@@ -2887,7 +2914,7 @@
                     "startIndex": 3,
                     "endIndex": 4
                   },
-                  "isOptional": false
+                  "isOptional": true
                 }
               ],
               "isOptional": false,

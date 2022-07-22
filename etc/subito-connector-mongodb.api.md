@@ -128,6 +128,8 @@ export interface IFiltersPipeline {
 // @public (undocumented)
 export interface IPageInfoInput {
     // (undocumented)
+    current: number;
+    // (undocumented)
     cursored: number;
     // (undocumented)
     total: number;
@@ -226,7 +228,7 @@ export class Paginator implements IPaginator {
         [key: string]: any;
     }[];
     setCursor({ field, type }: ICursor): this;
-    setPageInfo({ total, cursored }: IPageInfoInput): this;
+    setPageInfo({ total, cursored, current }: IPageInfoInput): this;
     // (undocumented)
     protected totalPage: number;
     // (undocumented)
@@ -258,7 +260,7 @@ export abstract class Repository extends MongoDataSource<Document_2> {
         sort?: string | undefined;
         order?: string | undefined;
     }): Promise<DocumentResult[]>;
-    findByCursor(input: IPaginatorInput, pipeline: Pipeline): Promise<{
+    findByCursor(input: IPaginatorInput, pipeline?: Pipeline): Promise<{
         edges: CursorEdge[];
         pageInfo: {
             hasNextPage: boolean;
