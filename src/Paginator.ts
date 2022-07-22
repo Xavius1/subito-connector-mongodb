@@ -124,9 +124,9 @@ class Paginator implements IPaginator {
    */
   public setPageInfo({ total = 0, cursored = 0, current = 0 }: IPageInfoInput) {
     const { limit, order } = this;
-    const previousResults = (cursored - current);
+    const previousResults = (total - cursored);
     this.totalResults = total;
-    this.hasNextPage = (cursored - limit > 0);
+    this.hasNextPage = ((total - (current + previousResults)) > 0);
     this.hasPreviousPage = (previousResults > 0);
     this.totalPage = (total > 0) ? Math.ceil(total / limit) : 0;
     this.currentPage = 1;
