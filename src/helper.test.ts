@@ -9,6 +9,6 @@ describe('Helper.newMongoId', () => {
   // newMongoId
   test('newMongoId should have length', () => {
     expect(Helper.newMongoId(true))
-      .toHaveLength(24);
+      .toHaveLength(25);
   });
 });

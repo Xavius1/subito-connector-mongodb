@@ -38,7 +38,7 @@ class Helper {
     const id = new mongo.ObjectId();
 
     if (toString) {
-      return id.toString();
+      return `${id.toString()}x`;
     }
 
     return id;
