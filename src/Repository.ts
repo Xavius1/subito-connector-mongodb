@@ -174,10 +174,11 @@ abstract class Repository extends MongoDataSource<Document> {
     this.canBeInserted(input);
 
     try {
-      const insert = await this.collection.insertOne(
-        this.prepareNewDoc(input),
+      const doc = this.prepareNewDoc(input);
+      await this.collection.insertOne(
+        doc,
       );
-      return insert.ops[0];
+      return doc;
     } catch (err) {
       console.log(err); // eslint-disable-line no-console
       throw new Error('SOMETHING WENT WRONG');
