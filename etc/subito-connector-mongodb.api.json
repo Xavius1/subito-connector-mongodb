@@ -967,7 +967,7 @@
                 },
                 {
                   "kind": "Content",
-                  "text": "{\n        $currentDate?: {\n            [key: string]: boolean | {\n                $type: 'timestamp' | 'date';\n            };\n        };\n        $inc?: {\n            [key: string]: number;\n        };\n        $min?: {\n            [key: string]: any;\n        };\n        $max?: {\n            [key: string]: any;\n        };\n        $mul?: {\n            [key: string]: number;\n        };\n        $rename?: {\n            [key: string]: string;\n        };\n        $set?: "
+                  "text": "{\n        $currentDate?: {\n            [key: string]: boolean | {\n                $type: 'timestamp' | 'date';\n            };\n        };\n        $inc?: {\n            [key: string]: number;\n        };\n        $min?: {\n            [key: string]: any;\n        };\n        $max?: {\n            [key: string]: any;\n        };\n        $mul?: {\n            [key: string]: number;\n        };\n        $push?: {\n            [key: string]: any;\n        };\n        $rename?: {\n            [key: string]: string;\n        };\n        $set?: "
                 },
                 {
                   "kind": "Reference",

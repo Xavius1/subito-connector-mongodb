@@ -45,6 +45,7 @@ export interface IDocUpdateInput {
     $min?: { [key: string]: any }
     $max?: { [key: string]: any }
     $mul?: { [key: string]: number }
+    $push?: { [key: string]: any }
     $rename?: { [key: string]: string }
     $set?: IDocInput
     $setOnInsert?: { [key: string]: any }

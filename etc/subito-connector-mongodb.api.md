@@ -95,6 +95,9 @@ export interface IDocUpdateInput {
         $mul?: {
             [key: string]: number;
         };
+        $push?: {
+            [key: string]: any;
+        };
         $rename?: {
             [key: string]: string;
         };
