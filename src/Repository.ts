@@ -53,6 +53,9 @@ export interface IDocUpdateInput {
       [key: string]: ''
     }
   }
+  params?: {
+    arrayFilters: { [key: string]: any }[]
+  }
 }
 
 /** @public */
@@ -246,8 +249,12 @@ abstract class Repository extends MongoDataSource<Document> {
     this.canBeUpdated(input);
 
     try {
-      const { id, query } = input;
-      const result = await this.collection.findOneAndUpdate({ _id: id }, query, { returnDocument: 'after' });
+      const { id, query, params = {} } = input;
+      const result = await this.collection.findOneAndUpdate(
+        { _id: id },
+        query,
+        { ...params, returnDocument: 'after' },
+      );
       this.deleteFromCacheById(id);
       return result.value;
     } catch (err) {
