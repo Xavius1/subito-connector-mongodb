@@ -77,6 +77,12 @@ export interface IDocUpdateInput {
     // (undocumented)
     id: MongoIdExt;
     // (undocumented)
+    params?: {
+        arrayFilters: {
+            [key: string]: any;
+        }[];
+    };
+    // (undocumented)
     query: {
         $currentDate?: {
             [key: string]: boolean | {

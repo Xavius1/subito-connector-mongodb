@@ -958,6 +958,33 @@
             },
             {
               "kind": "PropertySignature",
+              "canonicalReference": "subito-connector-mongodb!IDocUpdateInput#params:member",
+              "docComment": "",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "params?: "
+                },
+                {
+                  "kind": "Content",
+                  "text": "{\n        arrayFilters: {\n            [key: string]: any;\n        }[];\n    }"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isReadonly": false,
+              "isOptional": true,
+              "releaseTag": "Public",
+              "name": "params",
+              "propertyTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              }
+            },
+            {
+              "kind": "PropertySignature",
               "canonicalReference": "subito-connector-mongodb!IDocUpdateInput#query:member",
               "docComment": "",
               "excerptTokens": [
