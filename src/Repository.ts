@@ -325,6 +325,22 @@ abstract class Repository extends MongoDataSource<Document> {
   }
 
   /**
+   * Find one doc by id or throw error if doc is not found
+   * @param id - The doc id
+   * @returns
+   *
+   * @public
+   */
+  async findOneByIdOrThrow(id: MongoIdStr): Promise<Document> {
+    const doc = await this.findOneById(id);
+    if (!doc) {
+      throw new Error(`Doc ${id} not found.`);
+    }
+
+    return doc;
+  }
+
+  /**
    * Find one doc by specifics fields
    *
    * @param fields - The fields to match
