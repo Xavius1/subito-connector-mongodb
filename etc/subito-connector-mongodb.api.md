@@ -282,6 +282,7 @@ export abstract class Repository extends MongoDataSource<Document_2> {
         };
     }>;
     findOneByFields(fields: Fields, options?: Options): Promise<DocumentResult>;
+    findOneByIdOrThrow(id: MongoIdStr): Promise<Document_2>;
     findOneBySlug(slug: string, options?: Options): Promise<DocumentResult>;
     getDate(): Date;
     hardDeleteById(id: MongoIdExt): Promise<any>;

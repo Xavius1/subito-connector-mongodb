@@ -3028,6 +3028,68 @@
             },
             {
               "kind": "Method",
+              "canonicalReference": "subito-connector-mongodb!Repository#findOneByIdOrThrow:member(1)",
+              "docComment": "/**\n * Find one doc by id or throw error if doc is not found\n *\n * @param id - The doc id\n *\n * @returns \n *\n * @public\n */\n",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "findOneByIdOrThrow(id: "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "MongoIdStr",
+                  "canonicalReference": "subito-connector-mongodb!MongoIdStr:type"
+                },
+                {
+                  "kind": "Content",
+                  "text": "): "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "Promise",
+                  "canonicalReference": "!Promise:interface"
+                },
+                {
+                  "kind": "Content",
+                  "text": "<"
+                },
+                {
+                  "kind": "Reference",
+                  "text": "Document",
+                  "canonicalReference": "bson!Document:interface"
+                },
+                {
+                  "kind": "Content",
+                  "text": ">"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isStatic": false,
+              "returnTypeTokenRange": {
+                "startIndex": 3,
+                "endIndex": 7
+              },
+              "releaseTag": "Public",
+              "isProtected": false,
+              "overloadIndex": 1,
+              "parameters": [
+                {
+                  "parameterName": "id",
+                  "parameterTypeTokenRange": {
+                    "startIndex": 1,
+                    "endIndex": 2
+                  },
+                  "isOptional": false
+                }
+              ],
+              "isOptional": false,
+              "name": "findOneByIdOrThrow"
+            },
+            {
+              "kind": "Method",
               "canonicalReference": "subito-connector-mongodb!Repository#findOneBySlug:member(1)",
               "docComment": "/**\n * Find a doc by its slug\n *\n * @param slug - The slug to match\n *\n * @param options - Data source options\n *\n * @returns \n *\n * @public\n */\n",
               "excerptTokens": [
