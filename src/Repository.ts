@@ -91,7 +91,7 @@ abstract class Repository extends MongoDataSource<Document> {
     if (slug) {
       const docWithSlug = await this.findOneBySlug(slug);
       if (docWithSlug) {
-        throw new Error('SLUG_ALREADY_EXISTS');
+        throw new Error('409');
       }
     }
 
@@ -183,7 +183,7 @@ abstract class Repository extends MongoDataSource<Document> {
       return doc;
     } catch (err) {
       console.log(err); // eslint-disable-line no-console
-      throw new Error('SOMETHING WENT WRONG');
+      throw new Error('500');
     }
   }
 
@@ -208,7 +208,7 @@ abstract class Repository extends MongoDataSource<Document> {
       return insert.ops;
     } catch (err) {
       console.log(err); // eslint-disable-line no-console
-      throw new Error('SOMETHING WENT WRONG');
+      throw new Error('500');
     }
   }
 
@@ -225,13 +225,13 @@ abstract class Repository extends MongoDataSource<Document> {
     if ($set && $set.slug) {
       const docWithSlug = await this.findOneBySlug($set.slug);
       if (docWithSlug && docWithSlug._id !== id) { // eslint-disable-line no-underscore-dangle
-        throw new Error('SLUG_ALREADY_EXISTS');
+        throw new Error('409');
       }
     }
 
     const doc = await this.findOneById(id);
     if (!doc) {
-      throw new Error('DOC_NOT_FOUND');
+      throw new Error('404');
     }
 
     return true;
@@ -259,7 +259,7 @@ abstract class Repository extends MongoDataSource<Document> {
       return result.value;
     } catch (err) {
       console.log(err); // eslint-disable-line no-console
-      throw new Error('SOMETHING WENT WRONG');
+      throw new Error('500');
     }
   }
 
@@ -334,7 +334,7 @@ abstract class Repository extends MongoDataSource<Document> {
   async findOneByIdOrThrow(id: MongoIdStr): Promise<Document> {
     const doc = await this.findOneById(id);
     if (!doc) {
-      throw new Error(`Doc ${id} not found.`);
+      throw new Error('404');
     }
 
     return doc;
