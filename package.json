@@ -56,7 +56,7 @@
   },
   "dependencies": {
     "apollo-datasource-mongodb": "^0.5.2",
-    "mongodb": "4.10.0",
+    "mongodb": "4.11.0",
     "subito-lib": "0.14.0"
   }
 }
