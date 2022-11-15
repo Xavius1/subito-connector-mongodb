@@ -152,7 +152,7 @@ class Paginator implements IPaginator {
     const { type, field } = this;
     const value = doc[field];
     if (type === 'Date') {
-      const d = new Datte(value);
+      const d = new Datte({ date: value });
       // Return the unix millisecond timestamp
       return d.toString('x');
     }
