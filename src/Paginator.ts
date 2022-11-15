@@ -6,11 +6,11 @@ import type { IFilterPipelineInput } from './Helper.js';
 
 /** @public */
 export interface IPaginatorInput {
-  first: number
-  last: number
-  before: string
-  after: string
-  filters: IFilterPipelineInput
+  first?: number
+  last?: number
+  before?: string
+  after?: string
+  filters?: IFilterPipelineInput
 }
 
 /** @public */
@@ -84,10 +84,10 @@ class Paginator implements IPaginator {
     after,
     filters,
   }: IPaginatorInput) {
-    this.limit = first || last;
+    this.limit = first || last || 25;
     this.order = first ? 'ASC' : 'DESC';
-    this.value = first ? after : before;
-    this.filters = filters;
+    this.value = first ? after || null : before || null;
+    this.filters = filters || {};
   }
 
   /**
