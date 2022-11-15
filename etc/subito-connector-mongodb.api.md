@@ -155,15 +155,15 @@ export interface IPaginator {
 // @public (undocumented)
 export interface IPaginatorInput {
     // (undocumented)
-    after: string;
+    after?: string;
     // (undocumented)
-    before: string;
+    before?: string;
     // (undocumented)
-    filters: IFilterPipelineInput;
+    filters?: IFilterPipelineInput;
     // (undocumented)
-    first: number;
+    first?: number;
     // (undocumented)
-    last: number;
+    last?: number;
 }
 
 // @public (undocumented)

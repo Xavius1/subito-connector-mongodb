@@ -1354,7 +1354,7 @@
               "excerptTokens": [
                 {
                   "kind": "Content",
-                  "text": "after: "
+                  "text": "after?: "
                 },
                 {
                   "kind": "Content",
@@ -1366,7 +1366,7 @@
                 }
               ],
               "isReadonly": false,
-              "isOptional": false,
+              "isOptional": true,
               "releaseTag": "Public",
               "name": "after",
               "propertyTypeTokenRange": {
@@ -1381,7 +1381,7 @@
               "excerptTokens": [
                 {
                   "kind": "Content",
-                  "text": "before: "
+                  "text": "before?: "
                 },
                 {
                   "kind": "Content",
@@ -1393,7 +1393,7 @@
                 }
               ],
               "isReadonly": false,
-              "isOptional": false,
+              "isOptional": true,
               "releaseTag": "Public",
               "name": "before",
               "propertyTypeTokenRange": {
@@ -1408,7 +1408,7 @@
               "excerptTokens": [
                 {
                   "kind": "Content",
-                  "text": "filters: "
+                  "text": "filters?: "
                 },
                 {
                   "kind": "Reference",
@@ -1421,7 +1421,7 @@
                 }
               ],
               "isReadonly": false,
-              "isOptional": false,
+              "isOptional": true,
               "releaseTag": "Public",
               "name": "filters",
               "propertyTypeTokenRange": {
@@ -1436,7 +1436,7 @@
               "excerptTokens": [
                 {
                   "kind": "Content",
-                  "text": "first: "
+                  "text": "first?: "
                 },
                 {
                   "kind": "Content",
@@ -1448,7 +1448,7 @@
                 }
               ],
               "isReadonly": false,
-              "isOptional": false,
+              "isOptional": true,
               "releaseTag": "Public",
               "name": "first",
               "propertyTypeTokenRange": {
@@ -1463,7 +1463,7 @@
               "excerptTokens": [
                 {
                   "kind": "Content",
-                  "text": "last: "
+                  "text": "last?: "
                 },
                 {
                   "kind": "Content",
@@ -1475,7 +1475,7 @@
                 }
               ],
               "isReadonly": false,
-              "isOptional": false,
+              "isOptional": true,
               "releaseTag": "Public",
               "name": "last",
               "propertyTypeTokenRange": {
