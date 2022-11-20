@@ -180,7 +180,7 @@ abstract class Repository extends MongoDataSource<Document> {
     try {
       const doc = this.prepareNewDoc(input);
       await this.collection.insertOne(doc);
-      return doc;
+      return { ...doc, id: doc._id }; // eslint-disable-line no-underscore-dangle
     } catch (err) {
       console.log(err); // eslint-disable-line no-console
       throw new Error('500');
@@ -250,13 +250,13 @@ abstract class Repository extends MongoDataSource<Document> {
 
     try {
       const { id, query, params = {} } = input;
-      const result = await this.collection.findOneAndUpdate(
+      const { value: doc } = await this.collection.findOneAndUpdate(
         { _id: id },
         query,
         { ...params, returnDocument: 'after' },
       );
       this.deleteFromCacheById(id);
-      return result.value;
+      return { ...doc, id: doc._id }; // eslint-disable-line no-underscore-dangle
     } catch (err) {
       console.log(err); // eslint-disable-line no-console
       throw new Error('500');
@@ -331,13 +331,25 @@ abstract class Repository extends MongoDataSource<Document> {
    *
    * @public
    */
+  async findOneById(id: string | ObjectId): Promise<Document | null> {
+    const doc = await super.findOneById(id);
+    return doc ? { ...doc, id: doc._id } : null; // eslint-disable-line no-underscore-dangle
+  }
+
+  /**
+   * Find one doc by id or throw error if doc is not found
+   * @param id - The doc id
+   * @returns
+   *
+   * @public
+   */
   async findOneByIdOrThrow(id: MongoIdStr): Promise<Document> {
     const doc = await this.findOneById(id);
     if (!doc) {
       throw new Error('404');
     }
 
-    return doc;
+    return { ...doc, id: doc._id }; // eslint-disable-line no-underscore-dangle
   }
 
   /**
@@ -351,7 +363,36 @@ abstract class Repository extends MongoDataSource<Document> {
    */
   public async findOneByFields(fields: Fields, options?: Options): Promise<DocumentResult> {
     const [firstDoc] = await this.findByFields(fields, options);
-    return firstDoc;
+
+    if (!firstDoc) {
+      return null;
+    }
+
+    return { ...firstDoc, id: firstDoc._id }; // eslint-disable-line no-underscore-dangle
+  }
+
+  /**
+   * Find docs by specifics fields
+   *
+   * @param fields - The fields to match
+   * @param options - Data source options
+   * @returns
+   *
+   * @public
+   */
+  public async findByFields(
+    fields: Fields,
+    options?: Options,
+  ): Promise<(Document | null | undefined)[]> {
+    const docs = await super.findByFields(fields, options);
+
+    if (!docs) {
+      return docs;
+    }
+
+    return docs.map(
+      (doc) => (doc ? { ...doc, id: doc._id } : null), // eslint-disable-line no-underscore-dangle
+    );
   }
 
   /**
@@ -364,7 +405,13 @@ abstract class Repository extends MongoDataSource<Document> {
    * @public
    */
   public async findOneBySlug(slug: string, options?: Options): Promise<DocumentResult> {
-    return this.findOneByFields({ slug }, options);
+    const doc = await this.findOneByFields({ slug }, options);
+
+    if (!doc) {
+      return null;
+    }
+
+    return { ...doc, id: doc._id }; // eslint-disable-line no-underscore-dangle
   }
 
   /**
@@ -391,7 +438,11 @@ abstract class Repository extends MongoDataSource<Document> {
       current: (data.current?.length || 0),
     });
 
-    return paginator.get(data.current);
+    return paginator.get(
+      data.current.map(
+        (doc: Document) => ({ ...doc, id: doc._id }), // eslint-disable-line no-underscore-dangle
+      ),
+    );
   }
 
   /**
@@ -406,7 +457,12 @@ abstract class Repository extends MongoDataSource<Document> {
    * @public
    */
   async findAll({ sort = 'createdAt', order = 'ASC' }): Promise<DocumentResult[]> {
-    return this.collection.find({}, { sort: { [sort]: (order === 'ASC' ? 1 : -1) } }).toArray();
+    return this.collection.find(
+      {},
+      { sort: { [sort]: (order === 'ASC' ? 1 : -1) } },
+    ).toArray().map(
+      (doc: Document) => ({ ...doc, id: doc._id }), // eslint-disable-line no-underscore-dangle
+    );
   }
 }
 
