@@ -493,7 +493,7 @@
           "excerptTokens": [
             {
               "kind": "Content",
-              "text": "export declare type CursorEdge = "
+              "text": "export type CursorEdge = "
             },
             {
               "kind": "Content",
@@ -527,7 +527,7 @@
           "excerptTokens": [
             {
               "kind": "Content",
-              "text": "export declare type DocumentResult = "
+              "text": "export type DocumentResult = "
             },
             {
               "kind": "Reference",
@@ -557,7 +557,7 @@
           "excerptTokens": [
             {
               "kind": "Content",
-              "text": "export declare type GenericCursors = "
+              "text": "export type GenericCursors = "
             },
             {
               "kind": "Content",
@@ -1493,7 +1493,7 @@
           "excerptTokens": [
             {
               "kind": "Content",
-              "text": "export declare type MatchFilter = "
+              "text": "export type MatchFilter = "
             },
             {
               "kind": "Content",
@@ -1518,7 +1518,7 @@
           "excerptTokens": [
             {
               "kind": "Content",
-              "text": "export declare type MongoDBLink = "
+              "text": "export type MongoDBLink = "
             },
             {
               "kind": "Content",
@@ -1543,7 +1543,7 @@
           "excerptTokens": [
             {
               "kind": "Content",
-              "text": "export declare type MongoDBName = "
+              "text": "export type MongoDBName = "
             },
             {
               "kind": "Content",
@@ -1568,7 +1568,7 @@
           "excerptTokens": [
             {
               "kind": "Content",
-              "text": "export declare type MongoDBOptions = "
+              "text": "export type MongoDBOptions = "
             },
             {
               "kind": "Content",
@@ -1593,7 +1593,7 @@
           "excerptTokens": [
             {
               "kind": "Content",
-              "text": "export declare type MongoDBParams = "
+              "text": "export type MongoDBParams = "
             },
             {
               "kind": "Content",
@@ -1618,7 +1618,7 @@
           "excerptTokens": [
             {
               "kind": "Content",
-              "text": "export declare type MongoId = "
+              "text": "export type MongoId = "
             },
             {
               "kind": "Reference",
@@ -1644,7 +1644,7 @@
           "excerptTokens": [
             {
               "kind": "Content",
-              "text": "export declare type MongoIdExt = "
+              "text": "export type MongoIdExt = "
             },
             {
               "kind": "Reference",
@@ -1674,7 +1674,7 @@
           "excerptTokens": [
             {
               "kind": "Content",
-              "text": "export declare type MongoIdStr = "
+              "text": "export type MongoIdStr = "
             },
             {
               "kind": "Content",
@@ -2358,7 +2358,7 @@
           "excerptTokens": [
             {
               "kind": "Content",
-              "text": "export declare type PaginatorOrder = "
+              "text": "export type PaginatorOrder = "
             },
             {
               "kind": "Content",
@@ -2383,7 +2383,7 @@
           "excerptTokens": [
             {
               "kind": "Content",
-              "text": "export declare type Pipeline = "
+              "text": "export type Pipeline = "
             },
             {
               "kind": "Content",
@@ -2949,6 +2949,85 @@
             },
             {
               "kind": "Method",
+              "canonicalReference": "subito-connector-mongodb!Repository#findByFields:member(1)",
+              "docComment": "/**\n * Find docs by specifics fields\n *\n * @param fields - The fields to match\n *\n * @param options - Data source options\n *\n * @returns \n *\n * @public\n */\n",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "findByFields(fields: "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "Fields",
+                  "canonicalReference": "!\"\\\"apollo-datasource-mongodb\\\"\".Fields:interface"
+                },
+                {
+                  "kind": "Content",
+                  "text": ", options?: "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "Options",
+                  "canonicalReference": "!\"\\\"apollo-datasource-mongodb\\\"\".Options:interface"
+                },
+                {
+                  "kind": "Content",
+                  "text": "): "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "Promise",
+                  "canonicalReference": "!Promise:interface"
+                },
+                {
+                  "kind": "Content",
+                  "text": "<("
+                },
+                {
+                  "kind": "Reference",
+                  "text": "Document",
+                  "canonicalReference": "bson!Document:interface"
+                },
+                {
+                  "kind": "Content",
+                  "text": " | null | undefined)[]>"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isStatic": false,
+              "returnTypeTokenRange": {
+                "startIndex": 5,
+                "endIndex": 9
+              },
+              "releaseTag": "Public",
+              "isProtected": false,
+              "overloadIndex": 1,
+              "parameters": [
+                {
+                  "parameterName": "fields",
+                  "parameterTypeTokenRange": {
+                    "startIndex": 1,
+                    "endIndex": 2
+                  },
+                  "isOptional": false
+                },
+                {
+                  "parameterName": "options",
+                  "parameterTypeTokenRange": {
+                    "startIndex": 3,
+                    "endIndex": 4
+                  },
+                  "isOptional": true
+                }
+              ],
+              "isOptional": false,
+              "name": "findByFields"
+            },
+            {
+              "kind": "Method",
               "canonicalReference": "subito-connector-mongodb!Repository#findOneByFields:member(1)",
               "docComment": "/**\n * Find one doc by specifics fields\n *\n * @param fields - The fields to match\n *\n * @param options - Data source options\n *\n * @returns \n *\n * @public\n */\n",
               "excerptTokens": [
@@ -3025,6 +3104,72 @@
               ],
               "isOptional": false,
               "name": "findOneByFields"
+            },
+            {
+              "kind": "Method",
+              "canonicalReference": "subito-connector-mongodb!Repository#findOneById:member(1)",
+              "docComment": "/**\n * Find one doc by id or throw error if doc is not found\n *\n * @param id - The doc id\n *\n * @returns \n *\n * @public\n */\n",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "findOneById(id: "
+                },
+                {
+                  "kind": "Content",
+                  "text": "string | "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "ObjectId",
+                  "canonicalReference": "bson!~ObjectId:class"
+                },
+                {
+                  "kind": "Content",
+                  "text": "): "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "Promise",
+                  "canonicalReference": "!Promise:interface"
+                },
+                {
+                  "kind": "Content",
+                  "text": "<"
+                },
+                {
+                  "kind": "Reference",
+                  "text": "Document",
+                  "canonicalReference": "bson!Document:interface"
+                },
+                {
+                  "kind": "Content",
+                  "text": " | null>"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isStatic": false,
+              "returnTypeTokenRange": {
+                "startIndex": 4,
+                "endIndex": 8
+              },
+              "releaseTag": "Public",
+              "isProtected": false,
+              "overloadIndex": 1,
+              "parameters": [
+                {
+                  "parameterName": "id",
+                  "parameterTypeTokenRange": {
+                    "startIndex": 1,
+                    "endIndex": 3
+                  },
+                  "isOptional": false
+                }
+              ],
+              "isOptional": false,
+              "name": "findOneById"
             },
             {
               "kind": "Method",
