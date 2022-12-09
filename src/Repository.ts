@@ -175,7 +175,7 @@ abstract class Repository extends MongoDataSource<Document> {
    * @public
    */
   public async createDoc(input: IDocInput): Promise<DocumentResult> {
-    this.canBeInserted(input);
+    await this.canBeInserted(input);
 
     try {
       const doc = this.prepareNewDoc(input);
@@ -198,12 +198,15 @@ abstract class Repository extends MongoDataSource<Document> {
   public async createManyDocs(arr: IDocInput[]): Promise<DocumentResult[]> {
     const docs: Document[] = [];
     arr.forEach((input) => {
-      this.canBeInserted(input);
-      docs.push(this.prepareNewDoc(input));
+      docs.push((async () => {
+        await this.canBeInserted(input);
+        return this.prepareNewDoc(input);
+      })());
     });
-
     try {
-      const insert = await this.collection.insertMany(docs);
+      const insert = await this.collection.insertMany(
+        await Promise.all(docs),
+      );
 
       return insert.ops;
     } catch (err) {
