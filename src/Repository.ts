@@ -461,10 +461,10 @@ abstract class Repository extends MongoDataSource<Document> {
    * @public
    */
   async findAll({ sort = 'createdAt', order = 'ASC' }): Promise<DocumentResult[]> {
-    return this.collection.find(
+    return (await this.collection.find(
       {},
       { sort: { [sort]: (order === 'ASC' ? 1 : -1) } },
-    ).toArray().map(
+    ).toArray()).map(
       (doc: Document) => ({ ...doc, id: doc._id }), // eslint-disable-line no-underscore-dangle
     );
   }
