@@ -553,7 +553,7 @@
         {
           "kind": "TypeAlias",
           "canonicalReference": "subito-connector-mongodb!GenericCursors:type",
-          "docComment": "",
+          "docComment": "/**\n * @public\n */\n",
           "excerptTokens": [
             {
               "kind": "Content",

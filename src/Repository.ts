@@ -34,6 +34,7 @@ export interface IDocInput {
   [key: string]: any
 }
 
+/** @public */
 export type GenericCursors = 'ID' | 'CREATION_DATE' | 'DELETION_DATE' | 'SLUG';
 
 /** @public */
