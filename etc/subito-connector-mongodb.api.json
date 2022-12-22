@@ -2700,7 +2700,7 @@
             {
               "kind": "Method",
               "canonicalReference": "subito-connector-mongodb!Repository#deleteById:member(1)",
-              "docComment": "/**\n * Delete a document by its ID (soft)\n *\n * @remarks\n *\n * It makes a soft deletion, the doc still exists into the db with a field \"deleteAt\"\n *\n * @param id - ID of the document to delete\n *\n * @returns \n *\n * @public\n */\n",
+              "docComment": "/**\n * Delete a document by its ID (soft)\n *\n * @remarks\n *\n * It makes a soft deletion, the doc still exists into the db with a field \"deletedAt\"\n *\n * @param id - ID of the document to delete\n *\n * @returns \n *\n * @public\n */\n",
               "excerptTokens": [
                 {
                   "kind": "Content",
@@ -2753,7 +2753,7 @@
             {
               "kind": "Method",
               "canonicalReference": "subito-connector-mongodb!Repository#deleteManyById:member(1)",
-              "docComment": "/**\n * Delete a list of document by their IDs (soft)\n *\n * @remarks\n *\n * It makes a soft deletion, docs still exist into the db with a field \"deleteAt\"\n *\n * @param ids - An array of doc id\n *\n * @returns \n */\n",
+              "docComment": "/**\n * Delete a list of document by their IDs (soft)\n *\n * @remarks\n *\n * It makes a soft deletion, docs still exist into the db with a field \"deletedAt\"\n *\n * @param ids - An array of doc id\n *\n * @returns \n */\n",
               "excerptTokens": [
                 {
                   "kind": "Content",
