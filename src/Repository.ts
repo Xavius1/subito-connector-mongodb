@@ -271,7 +271,7 @@ abstract class Repository extends MongoDataSource<Document> {
    * Delete a document by its ID (soft)
    *
    * @remarks
-   * It makes a soft deletion, the doc still exists into the db with a field "deleteAt"
+   * It makes a soft deletion, the doc still exists into the db with a field "deletedAt"
    *
    * @param id - ID of the document to delete
    * @returns
@@ -279,7 +279,7 @@ abstract class Repository extends MongoDataSource<Document> {
    * @public
    */
   public async deleteById(id: MongoIdExt) {
-    return this.collection.updateOne({ _id: id }, { $set: { deleteAt: this.getDate() } });
+    return this.collection.updateOne({ _id: id }, { $set: { deletedAt: this.getDate() } });
   }
 
   /**
@@ -301,7 +301,7 @@ abstract class Repository extends MongoDataSource<Document> {
    * Delete a list of document by their IDs (soft)
    *
    * @remarks
-   * It makes a soft deletion, docs still exist into the db with a field "deleteAt"
+   * It makes a soft deletion, docs still exist into the db with a field "deletedAt"
    *
    * @param ids - An array of doc id
    * @returns
@@ -309,7 +309,7 @@ abstract class Repository extends MongoDataSource<Document> {
   public async deleteManyById(ids: MongoIdExt[]) {
     return this.collection.updateMany(
       { _id: { $in: ids } },
-      { $set: { deleteAt: this.getDate() } },
+      { $set: { deletedAt: this.getDate() } },
     );
   }
 
