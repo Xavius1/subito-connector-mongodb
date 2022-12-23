@@ -38,25 +38,38 @@ export interface IDocInput {
 export type GenericCursors = 'ID' | 'CREATION_DATE' | 'DELETION_DATE' | 'SLUG';
 
 /** @public */
+export type UpdateQuery = {
+  $currentDate ?: { [key: string]: boolean | { $type: 'timestamp' | 'date' } }
+  $inc ?: { [key: string]: number }
+  $min ?: { [key: string]: any }
+  $max ?: { [key: string]: any }
+  $mul ?: { [key: string]: number }
+  $push ?: { [key: string]: any }
+  $rename ?: { [key: string]: string }
+  $set ?: IDocInput
+  $setOnInsert ?: { [key: string]: any }
+  $unset ?: {
+    [key: string]: ''
+  }
+}
+
+/** @public */
+export type UpdateParams = {
+  arrayFilters: { [key: string]: any }[]
+}
+
+/** @public */
 export interface IDocUpdateInput {
   id: MongoIdExt
-  query: {
-    $currentDate?: { [key: string]: boolean | { $type: 'timestamp' | 'date' } }
-    $inc?: { [key: string]: number }
-    $min?: { [key: string]: any }
-    $max?: { [key: string]: any }
-    $mul?: { [key: string]: number }
-    $push?: { [key: string]: any }
-    $rename?: { [key: string]: string }
-    $set?: IDocInput
-    $setOnInsert?: { [key: string]: any }
-    $unset?: {
-      [key: string]: ''
-    }
-  }
-  params?: {
-    arrayFilters: { [key: string]: any }[]
-  }
+  query: UpdateQuery
+  params?: UpdateParams
+}
+
+/** @public */
+export type UpdateManyInput = {
+  ids: MongoIdExt[]
+  query: UpdateQuery
+  params?: UpdateParams
 }
 
 /** @public */
@@ -250,7 +263,7 @@ abstract class Repository extends MongoDataSource<Document> {
    * @public
    */
   public async updateDoc(input: IDocUpdateInput): Promise<DocumentResult> {
-    this.canBeUpdated(input);
+    await this.canBeUpdated(input);
 
     try {
       const { id, query, params = {} } = input;
@@ -261,6 +274,30 @@ abstract class Repository extends MongoDataSource<Document> {
       );
       this.deleteFromCacheById(id);
       return { ...doc, id: doc._id }; // eslint-disable-line no-underscore-dangle
+    } catch (err) {
+      console.log(err); // eslint-disable-line no-console
+      throw new Error('500');
+    }
+  }
+
+  /**
+   * Update many docs at once
+   * @remarks
+   * This method more insecure than updateDoc because it not performs canBeUpdated
+   *
+   * @param inputs - Input values
+   * @returns
+   *
+   * @public
+   */
+  public async updateManyDoc({ ids, query }: UpdateManyInput): Promise<DocumentResult[]> {
+    try {
+      await this.collection.updateMany(
+        { _id: { $in: ids } },
+        query,
+      );
+
+      return this.findManyByIds(ids);
     } catch (err) {
       console.log(err); // eslint-disable-line no-console
       throw new Error('500');
@@ -373,6 +410,21 @@ abstract class Repository extends MongoDataSource<Document> {
     }
 
     return { ...firstDoc, id: firstDoc._id }; // eslint-disable-line no-underscore-dangle
+  }
+
+  /**
+   * Find many doc by ids
+   * @param ids - The doc ids
+   * @returns
+   *
+   * @public
+   */
+  async findManyByIds(ids: (string | ObjectId)[]): Promise<(Document | null)[]> {
+    const docs = await super.findManyByIds(ids);
+
+    return docs.map(
+      (doc) => (doc ? { ...doc, id: doc._id } : null), // eslint-disable-line no-underscore-dangle
+    );
   }
 
   /**

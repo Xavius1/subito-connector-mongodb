@@ -76,45 +76,14 @@ export interface IDocInput {
 export interface IDocUpdateInput {
     // (undocumented)
     id: MongoIdExt;
+    // Warning: (ae-forgotten-export) The symbol "UpdateParams" needs to be exported by the entry point index.d.ts
+    //
     // (undocumented)
-    params?: {
-        arrayFilters: {
-            [key: string]: any;
-        }[];
-    };
+    params?: UpdateParams;
+    // Warning: (ae-forgotten-export) The symbol "UpdateQuery" needs to be exported by the entry point index.d.ts
+    //
     // (undocumented)
-    query: {
-        $currentDate?: {
-            [key: string]: boolean | {
-                $type: 'timestamp' | 'date';
-            };
-        };
-        $inc?: {
-            [key: string]: number;
-        };
-        $min?: {
-            [key: string]: any;
-        };
-        $max?: {
-            [key: string]: any;
-        };
-        $mul?: {
-            [key: string]: number;
-        };
-        $push?: {
-            [key: string]: any;
-        };
-        $rename?: {
-            [key: string]: string;
-        };
-        $set?: IDocInput;
-        $setOnInsert?: {
-            [key: string]: any;
-        };
-        $unset?: {
-            [key: string]: '';
-        };
-    };
+    query: UpdateQuery;
 }
 
 // @public (undocumented)
@@ -282,6 +251,7 @@ export abstract class Repository extends MongoDataSource<Document_2> {
         };
     }>;
     findByFields(fields: Fields, options?: Options): Promise<(Document_2 | null | undefined)[]>;
+    findManyByIds(ids: (string | ObjectId)[]): Promise<(Document_2 | null)[]>;
     findOneByFields(fields: Fields, options?: Options): Promise<DocumentResult>;
     findOneById(id: string | ObjectId): Promise<Document_2 | null>;
     findOneByIdOrThrow(id: MongoIdStr): Promise<Document_2>;
@@ -292,6 +262,8 @@ export abstract class Repository extends MongoDataSource<Document_2> {
     prepareNewDoc(doc: IDocInput): Document_2;
     setGenericCursor(name: GenericCursors): this;
     updateDoc(input: IDocUpdateInput): Promise<DocumentResult>;
+    // Warning: (ae-forgotten-export) The symbol "UpdateManyInput" needs to be exported by the entry point index.d.ts
+    updateManyDoc({ ids, query }: UpdateManyInput): Promise<DocumentResult[]>;
 }
 
 ```

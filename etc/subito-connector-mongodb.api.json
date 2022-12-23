@@ -966,8 +966,9 @@
                   "text": "params?: "
                 },
                 {
-                  "kind": "Content",
-                  "text": "{\n        arrayFilters: {\n            [key: string]: any;\n        }[];\n    }"
+                  "kind": "Reference",
+                  "text": "UpdateParams",
+                  "canonicalReference": "subito-connector-mongodb!UpdateParams:type"
                 },
                 {
                   "kind": "Content",
@@ -993,17 +994,9 @@
                   "text": "query: "
                 },
                 {
-                  "kind": "Content",
-                  "text": "{\n        $currentDate?: {\n            [key: string]: boolean | {\n                $type: 'timestamp' | 'date';\n            };\n        };\n        $inc?: {\n            [key: string]: number;\n        };\n        $min?: {\n            [key: string]: any;\n        };\n        $max?: {\n            [key: string]: any;\n        };\n        $mul?: {\n            [key: string]: number;\n        };\n        $push?: {\n            [key: string]: any;\n        };\n        $rename?: {\n            [key: string]: string;\n        };\n        $set?: "
-                },
-                {
                   "kind": "Reference",
-                  "text": "IDocInput",
-                  "canonicalReference": "subito-connector-mongodb!IDocInput:interface"
-                },
-                {
-                  "kind": "Content",
-                  "text": ";\n        $setOnInsert?: {\n            [key: string]: any;\n        };\n        $unset?: {\n            [key: string]: '';\n        };\n    }"
+                  "text": "UpdateQuery",
+                  "canonicalReference": "subito-connector-mongodb!UpdateQuery:type"
                 },
                 {
                   "kind": "Content",
@@ -1016,7 +1009,7 @@
               "name": "query",
               "propertyTypeTokenRange": {
                 "startIndex": 1,
-                "endIndex": 4
+                "endIndex": 2
               }
             }
           ],
@@ -3028,6 +3021,76 @@
             },
             {
               "kind": "Method",
+              "canonicalReference": "subito-connector-mongodb!Repository#findManyByIds:member(1)",
+              "docComment": "/**\n * Find many doc by ids\n *\n * @param ids - The doc ids\n *\n * @returns \n *\n * @public\n */\n",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "findManyByIds(ids: "
+                },
+                {
+                  "kind": "Content",
+                  "text": "(string | "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "ObjectId",
+                  "canonicalReference": "bson!~ObjectId:class"
+                },
+                {
+                  "kind": "Content",
+                  "text": ")[]"
+                },
+                {
+                  "kind": "Content",
+                  "text": "): "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "Promise",
+                  "canonicalReference": "!Promise:interface"
+                },
+                {
+                  "kind": "Content",
+                  "text": "<("
+                },
+                {
+                  "kind": "Reference",
+                  "text": "Document",
+                  "canonicalReference": "bson!Document:interface"
+                },
+                {
+                  "kind": "Content",
+                  "text": " | null)[]>"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isStatic": false,
+              "returnTypeTokenRange": {
+                "startIndex": 5,
+                "endIndex": 9
+              },
+              "releaseTag": "Public",
+              "isProtected": false,
+              "overloadIndex": 1,
+              "parameters": [
+                {
+                  "parameterName": "ids",
+                  "parameterTypeTokenRange": {
+                    "startIndex": 1,
+                    "endIndex": 4
+                  },
+                  "isOptional": false
+                }
+              ],
+              "isOptional": false,
+              "name": "findManyByIds"
+            },
+            {
+              "kind": "Method",
               "canonicalReference": "subito-connector-mongodb!Repository#findOneByFields:member(1)",
               "docComment": "/**\n * Find one doc by specifics fields\n *\n * @param fields - The fields to match\n *\n * @param options - Data source options\n *\n * @returns \n *\n * @public\n */\n",
               "excerptTokens": [
@@ -3610,6 +3673,68 @@
               ],
               "isOptional": false,
               "name": "updateDoc"
+            },
+            {
+              "kind": "Method",
+              "canonicalReference": "subito-connector-mongodb!Repository#updateManyDoc:member(1)",
+              "docComment": "/**\n * Update many docs at once\n *\n * @remarks\n *\n * This method more insecure than updateDoc because it not performs canBeUpdated\n *\n * @param inputs - Input values\n *\n * @returns \n *\n * @public\n */\n",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "updateManyDoc({ ids, query }: "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "UpdateManyInput",
+                  "canonicalReference": "subito-connector-mongodb!UpdateManyInput:type"
+                },
+                {
+                  "kind": "Content",
+                  "text": "): "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "Promise",
+                  "canonicalReference": "!Promise:interface"
+                },
+                {
+                  "kind": "Content",
+                  "text": "<"
+                },
+                {
+                  "kind": "Reference",
+                  "text": "DocumentResult",
+                  "canonicalReference": "subito-connector-mongodb!DocumentResult:type"
+                },
+                {
+                  "kind": "Content",
+                  "text": "[]>"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isStatic": false,
+              "returnTypeTokenRange": {
+                "startIndex": 3,
+                "endIndex": 7
+              },
+              "releaseTag": "Public",
+              "isProtected": false,
+              "overloadIndex": 1,
+              "parameters": [
+                {
+                  "parameterName": "{ ids, query }",
+                  "parameterTypeTokenRange": {
+                    "startIndex": 1,
+                    "endIndex": 2
+                  },
+                  "isOptional": false
+                }
+              ],
+              "isOptional": false,
+              "name": "updateManyDoc"
             }
           ],
           "extendsTokenRange": {
