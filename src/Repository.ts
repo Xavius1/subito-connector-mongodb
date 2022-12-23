@@ -67,7 +67,7 @@ export interface IDocUpdateInput {
 
 /** @public */
 export type UpdateManyInput = {
-  ids: MongoIdExt[]
+  filter: { [key: string]: unknown}
   query: UpdateQuery
   params?: UpdateParams
 }
@@ -290,14 +290,14 @@ abstract class Repository extends MongoDataSource<Document> {
    *
    * @public
    */
-  public async updateManyDoc({ ids, query }: UpdateManyInput): Promise<DocumentResult[]> {
+  public async updateManyDoc({ filter, query }: UpdateManyInput): Promise<DocumentResult[]> {
     try {
       await this.collection.updateMany(
-        { _id: { $in: ids } },
+        filter,
         query,
       );
 
-      return this.findManyByIds(ids);
+      return this.collection.find(filter);
     } catch (err) {
       console.log(err); // eslint-disable-line no-console
       throw new Error('500');
