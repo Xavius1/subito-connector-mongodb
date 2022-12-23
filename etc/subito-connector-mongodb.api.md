@@ -263,7 +263,7 @@ export abstract class Repository extends MongoDataSource<Document_2> {
     setGenericCursor(name: GenericCursors): this;
     updateDoc(input: IDocUpdateInput): Promise<DocumentResult>;
     // Warning: (ae-forgotten-export) The symbol "UpdateManyInput" needs to be exported by the entry point index.d.ts
-    updateManyDoc({ ids, query }: UpdateManyInput): Promise<DocumentResult[]>;
+    updateManyDoc({ filter, query }: UpdateManyInput): Promise<DocumentResult[]>;
 }
 
 ```

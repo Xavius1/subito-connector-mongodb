@@ -3681,7 +3681,7 @@
               "excerptTokens": [
                 {
                   "kind": "Content",
-                  "text": "updateManyDoc({ ids, query }: "
+                  "text": "updateManyDoc({ filter, query }: "
                 },
                 {
                   "kind": "Reference",
@@ -3725,7 +3725,7 @@
               "overloadIndex": 1,
               "parameters": [
                 {
-                  "parameterName": "{ ids, query }",
+                  "parameterName": "{ filter, query }",
                   "parameterTypeTokenRange": {
                     "startIndex": 1,
                     "endIndex": 2
