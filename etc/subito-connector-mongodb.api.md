@@ -191,6 +191,7 @@ export class Paginator implements IPaginator {
     getPipeline(customPipeline: Pipeline, reverse?: boolean): {
         [key: string]: any;
     }[];
+    getValueFromCursor(): string | Date | null;
     // (undocumented)
     protected hasNextPage: boolean;
     // (undocumented)

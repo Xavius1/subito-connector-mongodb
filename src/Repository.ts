@@ -267,12 +267,14 @@ abstract class Repository extends MongoDataSource<Document> {
 
     try {
       const { id, query, params = {} } = input;
+      const selector = typeof id === 'string' ? { _id: id } : id;
       const { value: doc } = await this.collection.findOneAndUpdate(
-        { _id: id },
+        selector,
         query,
         { ...params, returnDocument: 'after' },
       );
       this.deleteFromCacheById(id);
+
       return { ...doc, id: doc._id }; // eslint-disable-line no-underscore-dangle
     } catch (err) {
       console.log(err); // eslint-disable-line no-console

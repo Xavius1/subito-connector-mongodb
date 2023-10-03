@@ -2003,6 +2003,45 @@
               "name": "getPipeline"
             },
             {
+              "kind": "Method",
+              "canonicalReference": "subito-connector-mongodb!Paginator#getValueFromCursor:member(1)",
+              "docComment": "/**\n * Convert the cursor to its original value\n *\n * @returns \n *\n * @public\n */\n",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "getValueFromCursor(): "
+                },
+                {
+                  "kind": "Content",
+                  "text": "string | "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "Date",
+                  "canonicalReference": "!Date:interface"
+                },
+                {
+                  "kind": "Content",
+                  "text": " | null"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isStatic": false,
+              "returnTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 4
+              },
+              "releaseTag": "Public",
+              "isProtected": false,
+              "overloadIndex": 1,
+              "parameters": [],
+              "isOptional": false,
+              "name": "getValueFromCursor"
+            },
+            {
               "kind": "Property",
               "canonicalReference": "subito-connector-mongodb!Paginator#hasNextPage:member",
               "docComment": "",
