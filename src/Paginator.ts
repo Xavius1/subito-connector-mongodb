@@ -162,6 +162,17 @@ class Paginator implements IPaginator {
   }
 
   /**
+   * Convert the cursor to its original value
+   *
+   * @returns
+   * @public
+   */
+  public getValueFromCursor() {
+    const { type, value } = this;
+    return (type === 'Date' && value) ? new Date(parseInt(value, 10) / 1000) : value;
+  }
+
+  /**
    * Get the paginator result
    *
    * @param docs - List of raw mongodb documents
@@ -230,10 +241,10 @@ class Paginator implements IPaginator {
 
     const matcher: any = { $match: { [field]: {} } };
     if (order === 'ASC') {
-      matcher.$match[field][(reverse ? '$lte' : '$gt')] = value;
+      matcher.$match[field][(reverse ? '$lte' : '$gt')] = this.getValueFromCursor();
     }
     if (order === 'DESC') {
-      matcher.$match[field][(reverse ? '$gte' : '$lt')] = value;
+      matcher.$match[field][(reverse ? '$gte' : '$lt')] = this.getValueFromCursor();
     }
     return matcher;
   }
